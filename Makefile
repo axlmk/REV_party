@@ -1,6 +1,6 @@
 CC=gcc
 OPT=-Wall
-EXEC=revParty
+EXEC=scrutin
 PLACE=src/
 
 #exemple
@@ -11,12 +11,15 @@ all:$(EXEC)
 #liste.o: liste.c
 # etc
 
-main.o: $(PLACE)main.c
-	$(CC) -o main.o -c $(PLACE)main.c
+option.o: $(PLACE)option/option.c
+	$(CC) -o option.o -c $(PLACE)option/option.c $(OPT)
 
-$(EXEC): main.o
+main.o: $(PLACE)main.c
+	$(CC) -o main.o -c $(PLACE)main.c $(OPT)
+
+$(EXEC): main.o option.o
 #$(EXEC): main.o liste.o element.o
-	$(CC) main.o -o $(EXEC)
+	$(CC) main.o option.o -o $(EXEC)
 #	$(CC) main.o liste.o element.o -o $(EXEC)
 
 clean:
