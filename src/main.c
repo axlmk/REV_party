@@ -4,11 +4,17 @@ int main(int argc, char *argv[]) {
     csvType vote;
     char *method = malloc(sizeof(char));
     char *csvName = malloc(sizeof(char));
-    char *logfp = malloc(sizeof(char));
-    defineOptions(argc, argv, &vote, csvName, logfp, method);
-    printf("csvname : %s\nlogfp : %s\nmethod :%s\n", csvName, logfp, method);
+    char *logfpName = NULL;
+    defineOptions(argc, argv, &vote, csvName, logfpName, method);
+    /*if(logfpName!=NULL) {
+        if(!strcmp(logfpName, "stdout")) {
+            FILE *logfp = stdout;
+        } else {
+            FILE *logfp = fopen(logfpName, "w");
+        }
+    }
 
-    free(logfp);
+    free(logfp);*/
     free(csvName);
     free(method);
     return EXIT_SUCCESS;

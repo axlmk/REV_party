@@ -89,22 +89,22 @@ int defineOptions(int count, char *args[], csvType *Vote, char *CsvName, char *L
                 for(i=1;i<count;i++) {
                     if(!strcmp(args[i], "-i")) {
                         *Vote = BALLOT;
-                        realloc(CsvName, sizeof(char) * (strlen(args[i+1])+1));
+                        CsvName = realloc(CsvName, sizeof(char) * (strlen(args[i+1])+1));
                         strcpy(CsvName, args[i+1]);
                         i++;
                     } else if(!strcmp(args[i], "-d")) {
                         *Vote = MATRICE;
-                        realloc(CsvName, sizeof(char) * (strlen(args[i+1])+1));
+                        CsvName = realloc(CsvName, sizeof(char) * (strlen(args[i+1])+1));
                         strcpy(CsvName, args[i+1]);
                     } else if(!strcmp(args[i], "-m")) {
-                        realloc(Method, sizeof(char) * (strlen(args[i+1])+1));
+                        Method = realloc(Method, sizeof(char) * (strlen(args[i+1])+1));
                         strcpy(Method, args[i+1]);
                     } else if(!strcmp(args[i], "-l")) {
                         if(args[i+1][0] != '-') {
-                            realloc(Logs, sizeof(char) * (strlen(args[i+1])+1));
+                            Logs = realloc(Logs, sizeof(char) * (strlen(args[i+1])+1));
                             strcpy(Logs, args[i+1]);
                         } else {
-                            realloc(Logs, sizeof(char) * 7);
+                            Logs = realloc(Logs, sizeof(char) * 7);
                             strcpy(Logs, "stdout");
                         }
                     }
