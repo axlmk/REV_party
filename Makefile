@@ -11,6 +11,9 @@ all:$(EXEC)
 #liste.o: liste.c
 # etc
 
+list.o: $(PLACE)sdd/list.c
+	$(CC) -o list.o -c $(PLACE)sdd/list.c $(OPT)
+
 options.o: $(PLACE)options/options.c
 	$(CC) -o options.o -c $(PLACE)options/options.c $(OPT)
 
@@ -20,9 +23,9 @@ sdd.o: $(PLACE)sdd/sdd.c
 main.o: $(PLACE)main.c
 	$(CC) -o main.o -c $(PLACE)main.c $(OPT)
 
-$(EXEC): main.o options.o sdd.o
+$(EXEC): main.o options.o sdd.o list.o
 #$(EXEC): main.o liste.o element.o
-	$(CC) main.o options.o sdd.o -o $(EXEC)
+	$(CC) main.o options.o sdd.o list.o -o $(EXEC)
 #	$(CC) main.o liste.o element.o -o $(EXEC)
 
 clean:

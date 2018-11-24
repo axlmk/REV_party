@@ -1,10 +1,12 @@
 #ifndef SDD_H_
 #define SDD_H_
+
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #define MAX(a,b) (((a)>(b))?(a):(b))
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 //dynamic table of integers
 typedef struct dyn_tab{

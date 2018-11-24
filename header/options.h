@@ -1,5 +1,6 @@
 #ifndef OPTIONS_H_
 #define OPTIONS_H_
+
 #define UND "\x1b[4m"
 //underline for linux
 #define CLA "\x1b[0m"
