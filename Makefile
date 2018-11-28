@@ -3,13 +3,10 @@ OPT=-Wall
 EXEC=scrutin
 PLACE=src/
 
-#exemple
 all:$(EXEC)
 
-#element.o: element.c
-#	$(CC) -o element.o -c element.c $(OPT)
-#liste.o: liste.c
-# etc
+csv.o: $(PLACE)csv/import_csv.c
+	$(CC) -o csv.o -c $(PLACE)csv/import_csv.c $(OPT)
 
 list.o: $(PLACE)sdd/list.c
 	$(CC) -o list.o -c $(PLACE)sdd/list.c $(OPT)
@@ -23,10 +20,8 @@ sdd.o: $(PLACE)sdd/sdd.c
 main.o: $(PLACE)main.c
 	$(CC) -o main.o -c $(PLACE)main.c $(OPT)
 
-$(EXEC): main.o options.o sdd.o list.o
-#$(EXEC): main.o liste.o element.o
-	$(CC) main.o options.o sdd.o list.o -o $(EXEC)
-#	$(CC) main.o liste.o element.o -o $(EXEC)
+$(EXEC): main.o options.o sdd.o list.o csv.o
+	$(CC) main.o options.o sdd.o list.o csv.o -o $(EXEC)
 
 clean:
 	rm -rf *.o *.exe *.stackdump

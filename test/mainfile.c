@@ -4,7 +4,7 @@
 #include "liste.h"
 int main() {
   liste p;
-	Elementliste e1,e2,e;
+  Elementliste e1,e2,e;
 
   saisie_element(&e1);
   saisie_element(&e2);

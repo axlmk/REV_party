@@ -7,13 +7,7 @@
 //classic for linux
 #define PRINT_TRUE(a) ((a==TRUE)?(printf("TRUE\n")):printf("FALSE\n"))
 //helpful for debugging
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-typedef enum {BALLOT, MATRICE} csvType;
-typedef enum {TRUE = 1, FALSE = 0} bool;
+#include "global.h"
 
 int defineOptions(int count, char *args[], csvType *Vote, char *csvName, char *logs, char *Method);
 bool syntaxChecker(int count, char *args[]);

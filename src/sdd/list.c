@@ -143,7 +143,7 @@ void swapEltList(Elementlist *a, Elementlist *b) {
 
 void bubbleSortList(list *p);
 
-void pickEltList(list l, Elementlist *e, int index) {
+void pickEltList(list l, Elementlist *e, int index) { // a modifier
     cpyElt(e, l.arrList[index]);
 }
 
