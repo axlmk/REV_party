@@ -44,7 +44,7 @@ void countStr(char *str, int *nbRows, int *nbCols) {
 dyn_mat_str openMatrix(FILE *f, csvType vote) {
    char *str = ftos(f);
    char *token = NULL;
-   int nbRows, nbCols, offset, j=0, i=0;
+   int nbRows, nbCols, offset, j=0, i=0, k=0;
    dyn_mat_str matVote;
 
    countStr(str, &nbRows, &nbCols);
@@ -59,14 +59,18 @@ dyn_mat_str openMatrix(FILE *f, csvType vote) {
    while(token != NULL) {
        if(j%matVote.nbCols == 0 && j != 0) {
            j = 0;
+           k = 0;
            i++;
        }
-       matVote.tab[i][j] = malloc(sizeof(char) * strlen(token) + 1);
-       strcpy(matVote.tab[i][j], token);
+       if(j >= offset) {
+           //printf("k: %d j: %d i: %d\n", k, j, i);
+           matVote.tab[i][k] = malloc(sizeof(char) * strlen(token) + 1);
+           strcpy(matVote.tab[i][k], token);
+           k++;
+       }
        token = strtok(NULL, "\n\t");
        j++;
     }
-
     free(token);
     free(str);
     return matVote;

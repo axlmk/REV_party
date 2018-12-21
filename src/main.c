@@ -17,7 +17,9 @@ int main(int argc, char *argv[]) {
             }
         }*/
         FILE *csvFile = fopen(csvName, "r");
-        printDynCharMat(openMatrix(csvFile, vote), stdout);
+        dyn_mat_str lol = openMatrix(csvFile, vote);
+        printf("%d %d %d\n", lol.nbRows, lol.nbCols, lol.offset);
+        printDynCharMat(lol, stdout);
         fclose(csvFile);
     } else {
         printf("An error occured.\n");
