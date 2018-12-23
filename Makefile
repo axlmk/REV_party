@@ -17,11 +17,17 @@ options.o: $(PLACE)options/options.c
 sdd.o: $(PLACE)sdd/sdd.c
 	$(CC) -o sdd.o -c $(PLACE)sdd/sdd.c $(OPT)
 
+fptp.o: $(PLACE)uninomial/fptp.c
+	$(CC) -o fptp.o -c $(PLACE)uninomial/fptp.c $(OPT)
+
+utils.o: $(PLACE)utils.c
+	$(CC) -o utils.o -c $(PLACE)utils.c $(OPT)
+
 main.o: $(PLACE)main.c
 	$(CC) -o main.o -c $(PLACE)main.c $(OPT)
 
-$(EXEC): main.o options.o sdd.o list.o csv.o
-	$(CC) main.o options.o sdd.o list.o csv.o -o $(EXEC)
+$(EXEC): main.o options.o sdd.o list.o csv.o fptp.o utils.o
+	$(CC) main.o options.o sdd.o list.o csv.o fptp.o utils.o -o $(EXEC)
 
 clean:
 	rm -rf *.o *.exe *.stackdump

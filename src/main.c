@@ -1,6 +1,7 @@
 #include "../header/options.h"
 #include "../header/sdd.h"
 #include "../header/csv.h"
+#include "../header/uninomial.h"
 
 int main(int argc, char *argv[]) {
     csvType vote;
@@ -18,8 +19,13 @@ int main(int argc, char *argv[]) {
         }*/
         FILE *csvFile = fopen(csvName, "r");
         dyn_mat_str lol = openMatrix(csvFile, vote);
-        printf("%d %d %d\n", lol.nbRows, lol.nbCols, lol.offset);
-        printDynCharMat(lol, stdout);
+        //printDynCharMat(lol, stdout);
+        char *winner;
+        if(!fptp(lol, &winner)) {
+            printf("The winner is : %s\n", winner);
+        } else {
+            printf("wouaw\n");
+        }
         fclose(csvFile);
     } else {
         printf("An error occured.\n");
