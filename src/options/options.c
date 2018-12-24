@@ -61,12 +61,25 @@ bool syntaxChecker(int count, char *args[]) {
     return d == true || ie == true;
 }
 
+bool cmpExt(char *s, const char *ext) {
+    int i, lenExt = strlen(ext), lenS = strlen(s);
+    for(i=0;i<lenExt;i++) {
+        if(s[lenS - 1 - i] != ext[lenExt - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 bool semanticChecker(int count, char *args[]) {
     int i;
     for(i=1;i<count;i++) {
         if(!strcmp(args[i], "-d") || !strcmp(args[i], "-i")) {
             if(access(args[i+1], F_OK) == -1) {
                 fprintf(stderr, "The CSV file doesn't exist.\n");
+                return false;
+            } else if(!cmpExt(args[i+1], ".csv")) {
+                printf("This is not a CSV file.\n");
                 return false;
             }
         } else if(!strcmp(args[i], "-m")) {

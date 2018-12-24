@@ -20,9 +20,9 @@ int main(int argc, char *argv[]) {
         FILE *csvFile = fopen(csvName, "r");
         dyn_mat_str lol = openMatrix(csvFile, vote);
         //printDynCharMat(lol, stdout);
-        char *winner;
-        if(!fptp(lol, &winner)) {
-            printf("The winner is : %s\n", winner);
+        char *winner, *challenger="";
+        if(!trs(lol, &winner, &challenger)) {
+            printf("The winner is : %s, the second is : %s\n", winner, challenger);
         } else {
             printf("wouaw\n");
         }

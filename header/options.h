@@ -12,5 +12,7 @@
 int defineOptions(int count, char *args[], csvType *Vote, char *csvName, char *logs, char *Method);
 bool syntaxChecker(int count, char *args[]);
 bool semanticChecker(int count, char *args[]);
+bool cmpExt(char *s, const char *ext);
+
 
 #endif
