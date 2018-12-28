@@ -11,7 +11,7 @@ void cpyElt(Elementlist *target, Elementlist source) {
 }
 
 void printElt(Elementlist e, FILE *fp) {
-    fprintf(fp, "(%d to %d : %d)", e.src, e.dest, e.weight);
+    fprintf(fp, "(%d to %d : %d)\n", e.src, e.dest, e.weight);
 }
 
 bool cmpElt(Elementlist e1, Elementlist e2) {
@@ -23,76 +23,74 @@ bool cmpElt(Elementlist e1, Elementlist e2) {
 }
 
 int nbEltList(list lst) {
-    if(fullList(lst)) {
-        return DIMMAX;
-    } else if(emptyList(lst)) {
-        return 0;
-    } else {
-        if(lst.nbElt > lst.head) {
-            return lst.nbElt - lst.head + 1;
-        } else if(lst.nbElt < lst.head) {
-             return (lst.nbElt + 1) + (DIMMAX - lst.head);
-        } else {
-            return 1;
-        }
-    }
+    return lst.nbElt;
 }
 
 void createList(list *p) {
-    p->nbElt = -1; //tail
-    p->head = -1; //front
+    p->head = VIDE;
+    p->nbElt = 0;
 }
 
 void addFrontList(list *p, Elementlist e) {
-    if(emptyList(*p)) {
-        cpyElt(&p->arrList[0], e);
-        p->nbElt = 0;
-        p->head = 0;
+    if(fullList(*p)) {
+        fprintf(stderr, "You cannot add an element, the list is full.\n");
     } else {
-        if(p->head - 1 < 0) {
-            p->head = DIMMAX - 1;
+        if(emptyList(*p)) {
+            p->nbElt++;
+            p->head++;
+            cpyElt(&p->arrList[p->head], e);
         } else {
             p->head--;
+            if(p->head < 0) {
+                p->head = DIMMAX - 1;
+            }
+            cpyElt(&p->arrList[p->head], e);
+            p->nbElt++;
         }
-        cpyElt(&p->arrList[p->head], e);
     }
 }
 
 void addTailList(list *p, Elementlist e) {
-    if(emptyList(*p)) {
-        cpyElt(&p->arrList[0], e);
-        p->nbElt = 0;
-        p->head = 0;
+    if(fullList(*p)) {
+        fprintf(stderr, "You cannot add an element, the list is full.\n");
     } else {
-        if(p->nbElt + 1 == DIMMAX) {
-            p->nbElt = 0;
+        if(emptyList(*p)) {
+            p->nbElt++;
+            p->head++;
+            cpyElt(&p->arrList[p->head], e);
         } else {
+            if(p->head + p->nbElt >= DIMMAX) {
+                cpyElt(&p->arrList[p->head + p->nbElt - DIMMAX], e);
+            } else {
+                cpyElt(&p->arrList[p->head + p->nbElt], e);
+            }
             p->nbElt++;
         }
-        cpyElt(&p->arrList[p->nbElt], e);
     }
 }
 
 void delTailList(list *p) {
+    if(emptyList(*p)) {
+        fprintf(stderr, "You cannot delete an element, the list is empty.\n");
+    }
     if(nbEltList(*p) == 1) {
         createList(p);
     } else {
-        if(p->nbElt - 1 < 0) {
-            p->nbElt = DIMMAX;
-        } else {
-            p->nbElt--;
-        }
+        p->nbElt--;
     }
 }
 
 void delFrontList(list *p) {
+    if(emptyList(*p)) {
+        fprintf(stderr, "You cannot delete an element, the list is empty.\n");
+    }
     if(nbEltList(*p) == 1) {
         createList(p);
     } else {
-        if(p->head + 1 == DIMMAX) {
+        p->nbElt--;
+        p->head++;
+        if(p->head >= DIMMAX) {
             p->head = 0;
-        } else {
-            p->head++;
         }
     }
 }
@@ -102,34 +100,36 @@ void headList(list p, Elementlist *e) {
 }
 
 void tailList(list p, Elementlist *e) {
-    cpyElt(e, p.arrList[p.nbElt]);
+    if(p.head + p.nbElt >= DIMMAX) {
+        cpyElt(e, p.arrList[p.head + p.nbElt - DIMMAX]);
+    } else {
+        cpyElt(e, p.arrList[p.head + p.nbElt]);
+    }
 }
 
 bool emptyList(list p) {
-    return p.nbElt == -1;
+    if(nbEltList(p) == 0) {
+        return true;
+    } return false;
 }
 
 bool fullList(list p) {
-    if(p.nbElt == 99 && p.head == 0)
+    if(nbEltList(p) == DIMMAX) {
         return true;
-    else
-        return p.head == p.nbElt + 1;
+    } return false;
 }
 
-void dumpList(list p,FILE *fp) {
+void dumpList(list p, FILE *fp) {
     int i;
-    if(p.nbElt <= p.head) {
-        i = p.head;
-        while(i != p.nbElt) {
-            printElt(p.arrList[i], fp);
-            i++;
-            if(i == DIMMAX) {
-                i = 0;
-            }
-        }
+    if(emptyList(p)) {
+        fprintf(stderr, "There is nothing to display because the list is empty.\n");
     } else {
-        for(i=p.head;i<p.nbElt;i++) {
-            printElt(p.arrList[i], fp);
+        for(i=0;i<p.nbElt;i++) {
+            if(p.head + i >= DIMMAX) {
+                printElt(p.arrList[p.head + i], fp);
+            } else {
+                printElt(p.arrList[p.head + i], fp);
+            }
         }
     }
 }
@@ -141,30 +141,52 @@ void swapEltList(Elementlist *a, Elementlist *b) {
     cpyElt(a, c);
 }
 
-void bubbleSortList(list *p);
+void bubbleSortList(list *p) {
+    /*
+    pour i allant de taille de T - 1 à 1
+    pour j allant de 0 à i - 1
+    si T[j+1] < T[j]
+    échanger(T[j+1], T[j])
+    */
+    int i, j;
+    for(i=nbEltList(*p) - 1;i>0;i--) {
+        for(j=0;j<i;j++) {
+            if(p->arrList[j+1].weight < p->arrList[j].weight)
+                swapEltList(&p->arrList[j+1], &p->arrList[j]);
+        }
+    }
+}
 
-void pickEltList(list l, Elementlist *e, int index) { // a modifier
-    cpyElt(e, l.arrList[index]);
+void pickEltList(list l, Elementlist *e, int index) {
+    if(emptyList(l)) {
+        fprintf(stderr, "There is no element to return, because the list is empty.\n");
+    } else {
+        if(index < 0 || index >= DIMMAX) {
+            fprintf(stderr, "The index is not valid.\n");
+        } else if(index >= l.head && index < l.head + l.nbElt) {
+            if(l.head + l.nbElt >= DIMMAX) {
+                cpyElt(e, l.arrList[l.head + l.nbElt - DIMMAX]);
+            } else {
+                cpyElt(e, l.arrList[l.head + l.nbElt]);
+            }
+        } else {
+            fprintf(stderr, "The element indexed is not valid.\n");
+        }
+    }
 }
 
 bool belongEltList(list p,Elementlist e) {
-    int i;
-    if(p.nbElt == p.head) {
-        return cmpElt(p.arrList[p.head], e);
-    } else if (p.nbElt < p.head) {
-        i = p.head;
-        while(i != p.nbElt) {
-            if(cmpElt(p.arrList[i], e)) {
-                return true;
-            }
-            i++;
-            if(i == DIMMAX) {
-                i = 0;
-            }
-        }
+    if(emptyList(p)) {
+        fprintf(stderr, "The element cannot belong to the list, because the list is empty.\n");
     } else {
-        for(i=p.head;i<p.nbElt;i++) {
-            if(cmpElt(p.arrList[i], e)) {
+        int i, u;
+        for(i=0;i<p.nbElt;i++) {
+            if(p.head + i >= DIMMAX) {
+                u = p.head + i - DIMMAX;
+            } else {
+                u = i;
+            }
+            if(cmpElt(p.arrList[u], e)) {
                 return true;
             }
         }

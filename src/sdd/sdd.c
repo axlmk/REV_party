@@ -25,10 +25,12 @@ void printIntTab(int *tab, int dim, FILE *logfp) {
 void createDynIntMat(dyn_mat *stTab,int nbRows,int nbCols) {
     stTab->nbRows = nbRows;
     stTab->nbCols = nbCols;
-    int i;
-    stTab->tab = malloc(sizeof(int*) * stTab->nbCols);
-    for(i=0;i<stTab->nbCols;i++) {
-            stTab->tab[i] = malloc(sizeof(int) * stTab->nbRows);
+    int i, j;
+    stTab->tab = malloc(sizeof(int*) * nbRows);
+    for(i=0;i<nbRows;i++) {
+            stTab->tab[i] = malloc(sizeof(int) * nbCols);
+            for(j=0;j<stTab->nbCols;j++)
+                stTab->tab[i][j] = 0;
     }
 }
 
@@ -66,11 +68,11 @@ void printDynCharMat(dyn_mat_str t_tabmots, FILE *logfp) {
 
 void printDynIntMat(dyn_mat t_tab, FILE *logfp) {
     int i, j;
-    fprintf(logfp, "Characters's matrix :\n");
+    fprintf(logfp, "Matrix of integers :\n");
     for(i=0;i<t_tab.nbRows;i++) {
         fprintf(logfp, "\t(");
         for(j=0;j<t_tab.nbCols;j++) {
-            fprintf(logfp, "%c, ", t_tab.tab[i][j]);
+            fprintf(logfp, "%d, ", t_tab.tab[i][j]);
         }
         fprintf(logfp, ")\n");
     }

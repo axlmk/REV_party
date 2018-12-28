@@ -4,8 +4,8 @@
 #include "./sdd.h"
 // taille maximale de la list statique
 #define DIMMAX 100
-#define VIDE -1
 // constante  pour indiquer que la list est vide (par convention)
+#define VIDE -1
 
 typedef w_arc Elementlist;
 

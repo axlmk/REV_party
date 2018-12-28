@@ -2,6 +2,8 @@
 #include "../header/sdd.h"
 #include "../header/csv.h"
 #include "../header/uninomial.h"
+#include "../header/list.h"
+#include "../header/graph.h"
 
 int main(int argc, char *argv[]) {
     csvType vote;
@@ -21,14 +23,17 @@ int main(int argc, char *argv[]) {
         dyn_mat_str lol = openMatrix(csvFile, vote);
         //printDynCharMat(lol, stdout);
         char *winner, *challenger="";
-        if(!trs(lol, &winner, &challenger)) {
+        dyn_mat bidule = ballottoduel(lol);
+
+        dumpList(dueltolist(bidule), stdout);
+        /*if(!trs(lol, &winner, &challenger)) {
             printf("The winner is : %s, the second is : %s\n", winner, challenger);
         } else {
             printf("wouaw\n");
-        }
+        }*/
         fclose(csvFile);
     } else {
-        printf("An error occured.\n");
+        fprintf(stderr, "An error occured.\n");
         return EXIT_FAILURE;
     }
 

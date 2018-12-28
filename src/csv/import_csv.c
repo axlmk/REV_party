@@ -63,7 +63,6 @@ dyn_mat_str openMatrix(FILE *f, csvType vote) {
            i++;
        }
        if(j >= offset) {
-           //printf("k: %d j: %d i: %d\n", k, j, i);
            matVote.tab[i][k] = malloc(sizeof(char) * strlen(token) + 1);
            strcpy(matVote.tab[i][k], token);
            k++;

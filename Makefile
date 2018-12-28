@@ -26,12 +26,14 @@ trs.o: $(PLACE)uninomial/trs.c
 utils.o: $(PLACE)utils.c
 	$(CC) -o utils.o -c $(PLACE)utils.c $(OPT)
 
+graph.o: $(PLACE)graph/graph.c
+	$(CC) -o graph.o -c $(PLACE)graph/graph.c $(OPT)
 
 main.o: $(PLACE)main.c
 	$(CC) -o main.o -c $(PLACE)main.c $(OPT)
 
-$(EXEC): main.o options.o sdd.o list.o csv.o fptp.o trs.o utils.o
-	$(CC) main.o options.o sdd.o list.o csv.o fptp.o trs.o utils.o -o $(EXEC)
+$(EXEC): main.o options.o sdd.o list.o csv.o fptp.o trs.o utils.o graph.o
+	$(CC) main.o options.o sdd.o list.o csv.o fptp.o trs.o utils.o graph.o -o $(EXEC)
 
 clean:
 	rm -rf *.o *.exe *.stackdump
