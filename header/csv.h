@@ -6,9 +6,10 @@
 #include "sdd.h"
 #include "global.h"
 
-void getSize(FILE *f, int row, int col);
+//void getSize(FILE *f, int row, int col);
 int lenFile(FILE *f);
 dyn_mat_str openMatrix(FILE *f, csvType vote);
-
+void countStr(char *str, int *nbRows, int *nbCols);
+char *ftos(FILE *f);
 
 #endif

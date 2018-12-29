@@ -24,14 +24,14 @@ int main(int argc, char *argv[]) {
         //printDynCharMat(lol, stdout);
         char *winner, *challenger="";
         dyn_mat bidule = ballottoduel(lol);
-
-        dumpList(dueltolist(bidule), stdout);
+        generateFile(dueltolist(bidule));
+        fclose(csvFile);
+        //dumpList(dueltolist(bidule), stdout);
         /*if(!trs(lol, &winner, &challenger)) {
             printf("The winner is : %s, the second is : %s\n", winner, challenger);
         } else {
             printf("wouaw\n");
         }*/
-        fclose(csvFile);
     } else {
         fprintf(stderr, "An error occured.\n");
         return EXIT_FAILURE;

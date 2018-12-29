@@ -126,7 +126,7 @@ void dumpList(list p, FILE *fp) {
     } else {
         for(i=0;i<p.nbElt;i++) {
             if(p.head + i >= DIMMAX) {
-                printElt(p.arrList[p.head + i], fp);
+                printElt(p.arrList[p.head + i - DIMMAX], fp);
             } else {
                 printElt(p.arrList[p.head + i], fp);
             }
