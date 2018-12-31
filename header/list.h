@@ -35,6 +35,7 @@ bool fullList(list p); // renvoie true si la pile est pleine, false sinon
 void dumpList(list p,FILE *fp); // affiche le contenu de la list
 void swapEltList(Elementlist *a,Elementlist *b); // échange deux éléments de la list
 void bubbleSortList(list *p); // trie la list
+void bubbleSortListW(list *p);
 void pickEltList(list l,Elementlist *e,int index); // renvoie l'élément n° index
 bool belongEltList(list p,Elementlist e); // true si l'élément est dans la list
 #endif

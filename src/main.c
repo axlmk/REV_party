@@ -4,6 +4,7 @@
 #include "../header/uninomial.h"
 #include "../header/list.h"
 #include "../header/graph.h"
+#include "../header/condorcet.h"
 
 int main(int argc, char *argv[]) {
     csvType vote;
@@ -11,27 +12,16 @@ int main(int argc, char *argv[]) {
     char *csvName = malloc(sizeof(char));
     char *logfpName = NULL;
     if(!defineOptions(argc, argv, &vote, csvName, logfpName, method)) {
-
-        /*if(logfpName!=NULL) {
-            if(!strcmp(logfpName, "stdout")) {
-                FILE *logfp = stdout;
-            } else {
-                FILE *logfp = fopen(logfpName, "w");
-            }
-        }*/
         FILE *csvFile = fopen(csvName, "r");
         dyn_mat_str lol = openMatrix(csvFile, vote);
-        //printDynCharMat(lol, stdout);
         char *winner, *challenger="";
         dyn_mat bidule = ballottoduel(lol);
-        generateFile(dueltolist(bidule));
+        //printf("|%d|\n", isCondorcetWinner(dueltolist(bidule), bidule.nbCols));
+
+
+        //printDynIntMat(bidule, stdout);
+        printf("|%d|\n", isCondorcetWinner(rankedpairs(bidule), bidule.nbCols));
         fclose(csvFile);
-        //dumpList(dueltolist(bidule), stdout);
-        /*if(!trs(lol, &winner, &challenger)) {
-            printf("The winner is : %s, the second is : %s\n", winner, challenger);
-        } else {
-            printf("wouaw\n");
-        }*/
     } else {
         fprintf(stderr, "An error occured.\n");
         return EXIT_FAILURE;

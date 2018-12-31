@@ -61,7 +61,7 @@ bool syntaxChecker(int count, char *args[]) {
     return d == true || ie == true;
 }
 
-bool cmpExt(char *s, const char *ext) {
+bool cmpExt(char *s, const char *ext) { //compare l'extension d'un fichier avec une extension donnee
     int i, lenExt = strlen(ext), lenS = strlen(s);
     for(i=0;i<lenExt;i++) {
         if(s[lenS - 1 - i] != ext[lenExt - i - 1]) {

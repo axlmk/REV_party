@@ -151,11 +151,22 @@ void bubbleSortList(list *p) {
     int i, j;
     for(i=nbEltList(*p) - 1;i>0;i--) {
         for(j=0;j<i;j++) {
-            if(p->arrList[j+1].weight < p->arrList[j].weight)
+            if(p->arrList[j+1].src < p->arrList[j].src) //a changer en weight si besoin est
                 swapEltList(&p->arrList[j+1], &p->arrList[j]);
         }
     }
 }
+
+void bubbleSortListW(list *p) {
+    int i, j;
+    for(i=nbEltList(*p) - 1;i>0;i--) {
+        for(j=0;j<i;j++) {
+            if(p->arrList[j+1].weight > p->arrList[j].weight)
+                swapEltList(&p->arrList[j+1], &p->arrList[j]);
+        }
+    }
+}
+
 
 void pickEltList(list l, Elementlist *e, int index) {
     if(emptyList(l)) {
@@ -164,11 +175,8 @@ void pickEltList(list l, Elementlist *e, int index) {
         if(index < 0 || index >= DIMMAX) {
             fprintf(stderr, "The index is not valid.\n");
         } else if(index >= l.head && index < l.head + l.nbElt) {
-            if(l.head + l.nbElt >= DIMMAX) {
-                cpyElt(e, l.arrList[l.head + l.nbElt - DIMMAX]);
-            } else {
-                cpyElt(e, l.arrList[l.head + l.nbElt]);
-            }
+                cpyElt(e, l.arrList[index]);
+                cpyElt(e, l.arrList[l.head + l.nbElt - 1]);
         } else {
             fprintf(stderr, "The element indexed is not valid.\n");
         }
