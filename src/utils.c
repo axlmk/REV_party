@@ -16,16 +16,13 @@ char *incr(char *s) { //a changer
 dyn_mat ballottoduel(dyn_mat_str vote) {
     int i, j, k;
     dyn_mat duel;
-    createDynIntMat(&duel, vote.nbCols-vote.offset-1, vote.nbCols-vote.offset-1);
+    createDynIntMat(&duel, vote.nbCols-vote.offset, vote.nbCols-vote.offset);
     for(i=1;i<vote.nbRows;i++) {
-        for(j=1;j<vote.nbCols - vote.offset;j++) {
-            for(k=1;k<vote.nbCols - vote.offset;k++) {
+        for(j=vote.offset;j<vote.nbCols;j++) {
+            for(k=vote.offset;k<vote.nbCols;k++) {
                 if(j!=k) {
                     if(strtoi(vote.tab[i][j]) < strtoi(vote.tab[i][k])) {
-                        duel.tab[j-1][k-1]++;
-                    } else if(strtoi(vote.tab[i][j]) == strtoi(vote.tab[i][k])) {
-                        duel.tab[k-1][j-1]++;
-                        duel.tab[j-1][k-1]++;
+                        duel.tab[j - vote.offset][k - vote.offset]++;
                     }
                 }
             }

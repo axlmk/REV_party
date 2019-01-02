@@ -92,7 +92,7 @@ bool semanticChecker(int count, char *args[]) {
     return true;
 }
 
-int defineOptions(int count, char *args[], csvType *Vote, char *CsvName, char *Logs, char *Method) {
+int tagParser(int count, char *args[], csvType *Vote, char **CsvName, char **Logs, char **Method) {
     if(count < 2) {
         fprintf(stderr, "Usage : %s -i " UND "file.csv" CLA " | -d " UND "file.csv" CLA " [-l [" UND "file.txt" CLA "]] [-m " UND "method" CLA "]\n", args[0]);
         return EXIT_FAILURE;
@@ -103,27 +103,27 @@ int defineOptions(int count, char *args[], csvType *Vote, char *CsvName, char *L
                 for(i=1;i<count;i++) {
                     if(!strcmp(args[i], "-i")) {
                         *Vote = BALLOT;
-                        CsvName = realloc(CsvName, sizeof(char) * (strlen(args[i+1])+1));
-                        strcpy(CsvName, args[i+1]);
+                        *CsvName = malloc(sizeof(char) * (strlen(args[i+1])+1));
+                        strcpy(*CsvName, args[i+1]);
                         i++;
                     } else if(!strcmp(args[i], "-d")) {
                         *Vote = MATRICE;
-                        CsvName = realloc(CsvName, sizeof(char) * (strlen(args[i+1])+1));
-                        strcpy(CsvName, args[i+1]);
+                        *CsvName = malloc(sizeof(char) * (strlen(args[i+1])+1));
+                        strcpy(*CsvName, args[i+1]);
                     }
 
                     if(!strcmp(args[i], "-m")) {
-                        Method = realloc(Method, sizeof(char) * (strlen(args[i+1])+1));
-                        strcpy(Method, args[i+1]);
+                        *Method = malloc(sizeof(char) * (strlen(args[i+1])+1));
+                        strcpy(*Method, args[i+1]);
                     }
 
                     if(!strcmp(args[i], "-l")) {
                         if(args[i+1][0] != '-') {
-                            Logs = realloc(Logs, sizeof(char) * (strlen(args[i+1])+1));
-                            strcpy(Logs, args[i+1]);
+                            *Logs = malloc(sizeof(char) * (strlen(args[i+1])+1));
+                            strcpy(*Logs, args[i+1]);
                         } else {
-                            Logs = realloc(Logs, sizeof(char) * 7);
-                            strcpy(Logs, "stdout");
+                            *Logs = malloc(sizeof(char) * 7);
+                            strcpy(*Logs, "stdout");
                         }
                     }
                 }

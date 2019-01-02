@@ -31,13 +31,13 @@ void rmLowerCandidate(dyn_tab *candidates) {
 char *instant_runnoff_voting(dyn_mat_str ballot) {
     int i, j, win=0;
     dyn_tab candidates;
-    createDynIntTab(&candidates, ballot.nbCols - ballot.offset - 1);
+    createDynIntTab(&candidates, ballot.nbCols - ballot.offset);
     for(i=0;i<candidates.dim;i++)
         candidates.tab[i] = 0;
     for(i=0;i<ballot.nbRows;i++) {
-        for(j=ballot.offset+1;j<ballot.nbCols;j++) {
+        for(j=ballot.offset;j<ballot.nbCols;j++) {
             if(!strcmp(ballot.tab[i][j], "1")) {
-                candidates.tab[j - ballot.offset - 1]++;
+                candidates.tab[j - ballot.offset]++;
             }
         }
     }
@@ -46,5 +46,5 @@ char *instant_runnoff_voting(dyn_mat_str ballot) {
         rmLowerCandidate(&candidates);
         win = getWinner(candidates, ballot.nbRows-1);
     }
-    return (ballot.tab[0][ballot.offset + 1 + win]);
+    return (ballot.tab[0][ballot.offset + win]);
 }

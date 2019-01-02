@@ -23,7 +23,7 @@ list dueltolistranked(dyn_mat duel) {
     return graph;
 }
 
-list rankedpairs(dyn_mat duel) { //faut verifier que circuits fonctionne parce que c'est bizarre que pour vote.csv il en trouve aucun
+list rankedPairs(dyn_mat duel) { //faut verifier que circuits fonctionne parce que c'est bizarre que pour vote.csv il en trouve aucun
     list ranked = dueltolistranked(duel);
     list temp;
     int i;

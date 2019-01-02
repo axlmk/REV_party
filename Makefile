@@ -44,10 +44,13 @@ circuit.o: $(PLACE)circuit/circuit.c
 irv.o: $(PLACE)voting_methods/irv.c
 	$(CC) -o irv.o -c $^ $(OPT)
 
+display.o: $(PLACE)display/display.c
+	$(CC) -o display.o -c $^ $(OPT)
+
 main.o: $(PLACE)main.c
 	$(CC) -o main.o -c $(PLACE)main.c $(OPT)
 
-$(EXEC): main.o options.o sdd.o list.o csv.o fptp.o trs.o utils.o graph.o condorcet.o minimax.o rankedpairs.o circuit.o irv.o
+$(EXEC): main.o options.o sdd.o list.o csv.o fptp.o trs.o utils.o graph.o condorcet.o minimax.o rankedpairs.o circuit.o irv.o display.o
 	$(CC) $^ -o $(EXEC)
 
 clean:

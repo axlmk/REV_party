@@ -49,7 +49,7 @@ dyn_mat_str openMatrix(FILE *f, csvType vote) {
 
    countStr(str, &nbRows, &nbCols);
    if(vote == BALLOT) {
-       offset=2;
+       offset=3;
    } else {
        offset=0;
    }

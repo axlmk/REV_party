@@ -1,14 +1,14 @@
 #include "../../../header/uninomial.h"
 
 int findMin(dyn_mat_str vote, int row) {
-    int i, val, index = 0, mini = strtoi(vote.tab[row][1]);
+    int i, val, index = 0, mini = strtoi(vote.tab[row][vote.offset]);
     bool valid = true;
-    for(i=2;i<vote.nbCols - vote.offset;i++) { //looking for the min in a specified row
+    for(i=vote.offset+1;i<vote.nbCols;i++) { //looking for the min in a specified row
         val = strtoi(vote.tab[row][i]);
         if(val < mini) {
             mini = val;
             valid = true;
-            index = i-1;
+            index = i-vote.offset;
         } else if(val == mini){
             valid = false;
         }
@@ -20,7 +20,7 @@ int findMin(dyn_mat_str vote, int row) {
     }
 }
 
-int findBestCandidate(dyn_tab candidates) {
+int findBestCandidate(dyn_tab candidates, int *val) {
     int i, index = 0, maxi = candidates.tab[0];
     for(i=1;i<candidates.dim;i++) {
         if(candidates.tab[i] > maxi) {
@@ -28,13 +28,14 @@ int findBestCandidate(dyn_tab candidates) {
             index = i;
         }
     }
+    *val = maxi;
     return index;
 }
 
 dyn_tab createCandidateList(dyn_mat_str vote) {
     int i;
     dyn_tab candidates;
-    createDynIntTab(&candidates, vote.nbCols - vote.offset - 1);
+    createDynIntTab(&candidates, vote.nbCols - vote.offset);
     for(i=0;i<candidates.dim;i++) {
         candidates.tab[i] = 0;
     }
@@ -62,10 +63,11 @@ dyn_tab generateCandidateList(dyn_mat_str vote) {
     return candidates;
 }
 
-int fptp(dyn_mat_str vote, char **winner) {
+int fptp(dyn_mat_str vote, char **winner, int *value) {
     dyn_tab candidates = generateCandidateList(vote);
     if(listValid(candidates)) {
-        *winner = vote.tab[0][findBestCandidate(candidates)+1];
+        *winner = vote.tab[0][findBestCandidate(candidates, value) + vote.offset];
+        *value = *value * 100 / (vote.nbRows - 1);
         return EXIT_SUCCESS;
     } else {
         fprintf(stderr, "Error, the list of candidates doesn't contain at least one valid voter.\n");
