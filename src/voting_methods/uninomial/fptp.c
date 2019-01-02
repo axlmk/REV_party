@@ -1,4 +1,4 @@
-#include "../../header/uninomial.h"
+#include "../../../header/uninomial.h"
 
 int findMin(dyn_mat_str vote, int row) {
     int i, val, index = 0, mini = strtoi(vote.tab[row][1]);

@@ -1,7 +1,7 @@
-#include "../../header/condorcet.h"
+#include "../../../header/condorcet.h"
 
 int isCondorcetWinner(list duel, int nbCandidate) {
-    dumpList(duel, stdout);
+    //dumpList(duel, stdout);
     bubbleSortList(&duel);
     int i, count = 1;
     for(i=0;i<nbEltList(duel);i++) {

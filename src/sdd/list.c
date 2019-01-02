@@ -157,7 +157,17 @@ void bubbleSortList(list *p) {
     }
 }
 
-void bubbleSortListW(list *p) {
+void bubbleSortListWDown(list *p) {
+    int i, j;
+    for(i=nbEltList(*p) - 1;i>0;i--) {
+        for(j=0;j<i;j++) {
+            if(p->arrList[j+1].weight > p->arrList[j].weight)
+                swapEltList(&p->arrList[j+1], &p->arrList[j]);
+        }
+    }
+}
+
+void bubbleSortListWUp(list *p) {
     int i, j;
     for(i=nbEltList(*p) - 1;i>0;i--) {
         for(j=0;j<i;j++) {

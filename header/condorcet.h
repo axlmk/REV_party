@@ -16,5 +16,8 @@ int isCondorcetWinner(list duel, int nbCandidate);
 list dueltolistranked(dyn_mat duel);
 list rankedpairs(dyn_mat duel);
 
+list duelToSchwartz(dyn_mat duel);
+int schulze(dyn_mat duel);
+
 
 #endif

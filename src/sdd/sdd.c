@@ -59,7 +59,7 @@ void printDynCharMat(dyn_mat_str t_tabmots, FILE *logfp) {
     fprintf(logfp, "Matrix of strings :\n");
     for(i=0;i<t_tabmots.nbRows;i++) {
         fprintf(logfp, "\t(");
-        for(j=0;j<(t_tabmots.nbCols - t_tabmots.offset) - 1;j++) {
+        for(j=0;j<t_tabmots.nbCols-1;j++) {
             fprintf(logfp, "%s, ", t_tabmots.tab[i][j]);
         }
         fprintf(logfp, "%s)\n", t_tabmots.tab[i][j]);
@@ -113,8 +113,8 @@ void initDynCharMat(dyn_mat_str *s_tabmots, int nbRows, int nbCols, int offset) 
     s_tabmots->tab = malloc(sizeof(char**) * s_tabmots->nbRows);
     for(i=0;i<s_tabmots->nbRows;i++) {
         int j;
-        s_tabmots->tab[i] = malloc(sizeof(char*) * (s_tabmots->nbCols - offset));
-        for(j=0;j<(s_tabmots->nbCols - offset);j++) {
+        s_tabmots->tab[i] = malloc(sizeof(char*) * (s_tabmots->nbCols));
+        for(j=0;j<s_tabmots->nbCols;j++) {
             s_tabmots->tab[i][j] = NULL;
         }
     }

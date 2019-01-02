@@ -1,4 +1,4 @@
-#include "../../header/condorcet.h"
+#include "../../../header/condorcet.h"
 
 
 list dueltolistranked(dyn_mat duel) {
@@ -23,16 +23,18 @@ list dueltolistranked(dyn_mat duel) {
     return graph;
 }
 
-list rankedpairs(dyn_mat duel) {
+list rankedpairs(dyn_mat duel) { //faut verifier que circuits fonctionne parce que c'est bizarre que pour vote.csv il en trouve aucun
     list ranked = dueltolistranked(duel);
     list temp;
     int i;
     createList(&temp);
-    bubbleSortListW(&ranked);
+    bubbleSortListWDown(&ranked);
     for(i=0;i<nbEltList(ranked);i++) {
         addTailList(&temp, ranked.arrList[i]);
-        printElt(temp.arrList[0], stdout);
+        dumpList(temp, stdout);
+        printf("----\n");
         if(circuits(temp, duel.nbCols)) {
+            printf("DEBUG\n");
             delTailList(&temp);
         }
     }

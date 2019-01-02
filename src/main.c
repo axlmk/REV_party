@@ -5,6 +5,7 @@
 #include "../header/list.h"
 #include "../header/graph.h"
 #include "../header/condorcet.h"
+#include "../header/irv.h"
 
 int main(int argc, char *argv[]) {
     csvType vote;
@@ -14,13 +15,15 @@ int main(int argc, char *argv[]) {
     if(!defineOptions(argc, argv, &vote, csvName, logfpName, method)) {
         FILE *csvFile = fopen(csvName, "r");
         dyn_mat_str lol = openMatrix(csvFile, vote);
-        char *winner, *challenger="";
+        //printDynCharMat(lol, stdout);
+        printf("winner %s\n", instant_runnoff_voting(lol));
+        /*char *winner, *challenger="";
         dyn_mat bidule = ballottoduel(lol);
         //printf("|%d|\n", isCondorcetWinner(dueltolist(bidule), bidule.nbCols));
 
 
         //printDynIntMat(bidule, stdout);
-        printf("|%d|\n", isCondorcetWinner(rankedpairs(bidule), bidule.nbCols));
+        isCondorcetWinner(rankedpairs(bidule), bidule.nbCols);*/
         fclose(csvFile);
     } else {
         fprintf(stderr, "An error occured.\n");

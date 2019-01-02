@@ -1,4 +1,4 @@
-#include "../../header/condorcet.h"
+#include "../../../header/condorcet.h"
 
 int minimax(dyn_mat duel) {
     int i, j, max = 0, index;

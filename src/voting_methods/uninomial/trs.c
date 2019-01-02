@@ -1,4 +1,4 @@
-#include "../../header/uninomial.h"
+#include "../../../header/uninomial.h"
 
 int sumCandidate(dyn_tab candidates) {
     int i, res;
