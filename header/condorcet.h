@@ -5,7 +5,8 @@
 #include "list.h"
 #include "sdd.h"
 #include "circuit.h"
-
+#include "utils.h"
+#include "graph.h"
 //#define MAX(a, b) ((a>)?(printf("TRUE\n")):printf("FALSE\n"))
 //CODE
 

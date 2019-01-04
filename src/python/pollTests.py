@@ -7,8 +7,6 @@ import pylab
 G = nx.DiGraph()
 
 # ajouter les arcs ici
-G.add_edges_from([(0,1)], weight=102)
-G.add_edges_from([(2,1)], weight=101)
 
 print(tournament.is_tournament(G))
 

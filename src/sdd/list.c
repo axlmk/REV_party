@@ -186,7 +186,7 @@ void pickEltList(list l, Elementlist *e, int index) {
             fprintf(stderr, "The index is not valid.\n");
         } else if(index >= l.head && index < l.head + l.nbElt) {
                 cpyElt(e, l.arrList[index]);
-                cpyElt(e, l.arrList[l.head + l.nbElt - 1]);
+                //cpyElt(e, l.arrList[l.head + l.nbElt - 1]);
         } else {
             fprintf(stderr, "The element indexed is not valid.\n");
         }

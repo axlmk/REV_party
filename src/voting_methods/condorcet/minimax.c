@@ -11,9 +11,14 @@ int minimax(dyn_mat duel) {
                 }
             }
         }
+        if(isLog()) {
+            fprintf(logfp, "Min of the candidate n%d = %d\n", i, min);
+        }
         if(min > max) {
             max = min;
             index = i;
+        } else if(min == max) {
+            index = -1;
         }
     }
     return index;

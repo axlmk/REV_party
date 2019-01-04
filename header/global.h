@@ -6,6 +6,9 @@
 #include <string.h>
 #include <unistd.h>
 
+FILE *logfp;
+char *logfpName;
+
 typedef enum {BALLOT, MATRICE} csvType;
 
 #endif

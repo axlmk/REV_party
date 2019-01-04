@@ -15,7 +15,6 @@ int ** createIntMat(int nbRows,int nbCols) {
 
 void printIntTab(int *tab, int dim, FILE *logfp) {
     int i;
-    fprintf(logfp, "Integers's table :\n");
     fprintf(logfp, "\t(");
     for(i=0;i<dim;i++) {
         fprintf(logfp, "%d ", tab[i]);
@@ -48,45 +47,42 @@ void createDynCharMat(dyn_mat_str *s_tabmots) {
 
 void printDynIntTab(dyn_tab t_tab, FILE *logfp) {
     int i;
-    fprintf(logfp, "Integers's table:\n\t(");
+    fprintf(logfp, "\t(");
     for(i=0;i<t_tab.dim-1;i++) {
         fprintf(logfp, "%d, ", t_tab.tab[i]);
-    } fprintf(logfp, "%d)\n", t_tab.tab[i]);
+    } fprintf(logfp, "%d)\n\n", t_tab.tab[i]);
 }
 
 void printDynCharMat(dyn_mat_str t_tabmots, FILE *logfp) {
     int i, j;
-    fprintf(logfp, "Matrix of strings :\n");
     for(i=0;i<t_tabmots.nbRows;i++) {
         fprintf(logfp, "\t(");
         for(j=0;j<t_tabmots.nbCols-1;j++) {
             fprintf(logfp, "%s, ", t_tabmots.tab[i][j]);
         }
-        fprintf(logfp, "%s)\n", t_tabmots.tab[i][j]);
+        fprintf(logfp, "%s)\n\n", t_tabmots.tab[i][j]);
     }
 }
 
 void printDynIntMat(dyn_mat t_tab, FILE *logfp) {
     int i, j;
-    fprintf(logfp, "Matrix of integers :\n");
     for(i=0;i<t_tab.nbRows;i++) {
         fprintf(logfp, "\t(");
         for(j=0;j<t_tab.nbCols;j++) {
             fprintf(logfp, "%d, ", t_tab.tab[i][j]);
         }
-        fprintf(logfp, ")\n");
+        fprintf(logfp, ")\n\n");
     }
 }
 
 void printIntMat(int **duels_mat,int nbRows,int nbCols,FILE *logfp) {
     int i, j;
-    fprintf(logfp, "Integers's matrix :\n");
     for(i=0;i<nbRows;i++) {
         fprintf(logfp, "\t(");
         for(j=0;j<nbCols;j++) {
             fprintf(logfp, "%d, ", duels_mat[i][j]);
         }
-        fprintf(logfp, ")\n");
+        fprintf(logfp, ")\n\n");
     }
 }
 

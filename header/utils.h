@@ -7,6 +7,7 @@
 
 int strtoi(char *s);
 char *incr(char *s);
-dyn_mat ballottoduel(dyn_mat_str vote);
+dyn_mat ballottoduel(dyn_mat_str vote, csvType type);
+bool isLog();
 
 #endif

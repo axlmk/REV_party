@@ -12,59 +12,87 @@ int main(int argc, char *argv[]) {
     csvType vote;
     char *method = NULL;
     char *csvName = NULL;
-    char *logfpName = NULL;
     if(!tagParser(argc, argv, &vote, &csvName, &logfpName, &method)) {
         FILE *csvFile = fopen(csvName, "r");
+        if(logfpName != NULL) {
+            if(strcmp(logfpName, "stdout")) {
+                logfp = fopen(logfpName, "w");
+                if(logfp == NULL) {
+                    perror("The name of the log file is invalid. So the log file will not be used.\n");
+                    logfpName = NULL;
+                }
+            } else {
+                logfp = stdout;
+            }
+        }
         if(csvFile != NULL) {
             dyn_mat_str mat = openMatrix(csvFile, vote);
             fclose(csvFile);
-            if(method != NULL) {
-                char *winner = NULL;
-                int pourcent = 0, tour = 0, nbCandidates = mat.nbCols - mat.offset, nbVoters = mat.nbRows - 1;
-                if(!strcmp(method, "uni1")) {
-                    fptp(mat, &winner, &pourcent);
-                    displayWinner(winner, method, nbCandidates, nbVoters, pourcent, tour);
-                } else if(!strcmp(method, "uni2")) {
-                    char *challenger = NULL;
-                    int pourcent2 = 0, pourcent3 = 0;
-                    trs(mat, &winner, &challenger, &pourcent, &pourcent2, &pourcent3);
-                    displayWinner(winner, method, nbCandidates, nbVoters, pourcent, 1);
-                    displayWinner(challenger, method, nbCandidates, nbVoters, pourcent2, 1);
-                    displayWinner(winner, method, nbCandidates, nbVoters, pourcent3, 2);
-                } else if(!strcmp(method, "cm")) {
-                    dyn_mat duel = ballottoduel(mat);
-                    list duel_l = dueltolist(duel);
-                    if(isCondorcetWinner(duel_l, nbCandidates)) {
-                        displayWinner(winner, method, nbCandidates, nbVoters, 0, 0);
-                    } else {
-                        int ind = minimax(duel);
-                        displayWinner(mat.tab[0][ind + mat.offset], method, nbCandidates, nbVoters, 0, 0) ;
-                    }
-                } else if(!strcmp(method, "cp")) {
-                    dyn_mat duel = ballottoduel(mat);
-                    list duel_l = dueltolist(duel);
-                    if(isCondorcetWinner(duel_l, nbCandidates)) {
-                        isCondorcetWinner(rankedPairs(duel), nbCandidates);
-                        displayWinner(winner, method, nbCandidates, nbVoters, 0, 0);
-                    } else {
-                        displayWinner(winner, method, nbCandidates, nbVoters, 0, 0);
-                    }
-                } else if(!strcmp(method, "cs")) {
-                    dyn_mat duel = ballottoduel(mat);
-                    list duel_l = dueltolist(duel);
-                    if(isCondorcetWinner(duel_l, nbCandidates)) {
-                        displayWinner(winner, method, nbCandidates, nbVoters, 0, 0);
-                    } else {
-                        displayWinner(winner, method, nbCandidates, nbVoters, 0, 0);
-                    }
-                } else if(!strcmp(method, "va")) {
-                    winner = instant_runnoff_voting(mat);
-                    displayWinner(winner, method, nbCandidates, nbVoters, 0, 0);
-                } else {
-                    fputs("The method is invalid.\n", stderr);
+            char *winner = NULL;
+            int pourcent = 0, tour = 0, nbCandidates = mat.nbCols - mat.offset, nbVoters = mat.nbRows - 1;
+            if((method == NULL || !strcmp(method, "uni1")) && vote == BALLOT) {
+                fptp(mat, &winner, &pourcent);
+                displayWinner(winner, "uni1", nbCandidates, nbVoters, pourcent, tour);
+            } if((method == NULL || !strcmp(method, "uni2")) && vote == BALLOT) {
+                char *challenger = NULL;
+                int pourcent2 = 0, pourcent3 = 0;
+                trs(mat, &winner, &challenger, &pourcent, &pourcent2, &pourcent3);
+                displayWinner(winner, "uni2", nbCandidates, nbVoters, pourcent, 1);
+                if(winner != NULL) {
+                    displayWinner(challenger, "uni2", nbCandidates, nbVoters, pourcent2, 1);
+                    displayWinner(winner, "uni2", nbCandidates, nbVoters, pourcent3, 2);
                 }
-            } else {
-                printf("plop\n");
+            } if(method == NULL || !strcmp(method, "cm")) {
+                dyn_mat duel = ballottoduel(mat, vote);
+                list duel_l = dueltolist(duel);
+                int ind = -1;
+                if(isLog()) {
+                    fprintf(logfp, "---- Condorcet minimax dislpay : ----\n\n");
+                    fprintf(logfp, "Duel matrix :\n");
+                    printDynIntMat(duel, stdout);
+                    fprintf(logfp, "Corresponding list :\n");
+                    dumpList(duel_l, logfp);
+                }
+                ind = isCondorcetWinner(duel_l, nbCandidates);
+                if(ind != -1) {
+                    displayWinner(mat.tab[0][mat.offset + ind], "cm", nbCandidates, nbVoters, 0, 0);
+                } else {
+                    ind = minimax(duel);
+                    if(ind == -1) { // l'affichage ne fait pas la difference entre ballot et duel
+                        displayWinner("egalite entre plusieurs candidats", "cm", nbCandidates, nbVoters, 0, 0);
+                    } else {
+                        displayWinner(mat.tab[0][ind + mat.offset], "cm", nbCandidates, nbVoters, 0, 0);
+                    }
+                }
+            } if(method == NULL || !strcmp(method, "cp")) {
+                dyn_mat duel = ballottoduel(mat, vote);
+                list duel_l = dueltolist(duel);
+                int ind = isCondorcetWinner(duel_l, nbCandidates);
+                if(ind != -1) {
+                    displayWinner(mat.tab[0][mat.offset + ind], "cp", nbCandidates, nbVoters, 0, 0);
+                } else {
+                    ind = isCondorcetWinner(rankedPairs(duel), nbCandidates);
+                    printf("%d\n", ind);
+                    printf("%d\n", mat.offset);
+                    displayWinner(mat.tab[0][mat.offset + ind], "cp", nbCandidates, nbVoters, 0, 0);
+                }
+            /*} if(method == NULL || !strcmp(method, "cs")) {
+                dyn_mat duel = ballottoduel(mat, vote);
+                list duel_l = dueltolist(duel);
+                if(isCondorcetWinner(duel_l, nbCandidates)) {
+                    displayWinner(winner, "cs", nbCandidates, nbVoters, 0, 0);
+                } else {
+                    displayWinner(winner, "cs", nbCandidates, nbVoters, 0, 0);
+                }*/
+            } if((method == NULL || !strcmp(method, "va")) && vote == BALLOT) {
+                printf("debug\n");
+                winner = instant_runnoff_voting(mat);
+                printf("debug\n");
+                displayWinner(winner, "va", nbCandidates, nbVoters, 0, 0);
+            } if(method != NULL) {
+                if((!strcmp(method, "va") && vote != BALLOT) || (!strcmp(method, "uni2") && vote != BALLOT) || (!strcmp(method, "uni1") && vote != BALLOT)) {
+                    fprintf(stderr, "You cannot use a matrix of duels with this method of voting.\n");
+                }
             }
         } else {
             fputs("An error occured while opening file.\n", stderr);

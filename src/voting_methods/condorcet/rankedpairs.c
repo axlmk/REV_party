@@ -1,6 +1,5 @@
 #include "../../../header/condorcet.h"
 
-
 list dueltolistranked(dyn_mat duel) {
     int i, j;
     Elementlist e;
@@ -11,7 +10,7 @@ list dueltolistranked(dyn_mat duel) {
             if(duel.tab[i][j] > duel.tab[j][i]) {
                 e.src = i;
                 e.dest = j;
-                e.weight = duel.tab[i][j] - duel.tab[i][j];
+                e.weight = duel.tab[i][j] - duel.tab[j][i];
             } else {
                 e.src = j;
                 e.dest = i;
@@ -23,18 +22,20 @@ list dueltolistranked(dyn_mat duel) {
     return graph;
 }
 
-list rankedPairs(dyn_mat duel) { //faut verifier que circuits fonctionne parce que c'est bizarre que pour vote.csv il en trouve aucun
+list rankedPairs(dyn_mat duel) { //faut verifier que circuits fonctionne parce que c'est bizarre que pour vote.csv il en trouve aucu
     list ranked = dueltolistranked(duel);
     list temp;
     int i;
+    /*Elementlist e;
+    dumpList(ranked, stdout);
+    printf("--\n");
+    pickEltList(ranked, &e, 3);
+    printElt(e, stdout);*/
     createList(&temp);
     bubbleSortListWDown(&ranked);
     for(i=0;i<nbEltList(ranked);i++) {
         addTailList(&temp, ranked.arrList[i]);
-        dumpList(temp, stdout);
-        printf("----\n");
         if(circuits(temp, duel.nbCols)) {
-            printf("DEBUG\n");
             delTailList(&temp);
         }
     }

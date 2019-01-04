@@ -83,7 +83,7 @@ bool semanticChecker(int count, char *args[]) {
                 return false;
             }
         } else if(!strcmp(args[i], "-m")) {
-            if(strcmp(args[i+1], "uni1") && strcmp(args[i+1], "uni2") && strcmp(args[i+1], "cm") && strcmp(args[i+1], "cp") && strcmp(args[i+1], "cs") &&strcmp(args[i+1], "va")) {
+            if(strcmp(args[i+1], "uni1") && strcmp(args[i+1], "uni2") && strcmp(args[i+1], "cm") && strcmp(args[i+1], "cp") && strcmp(args[i+1], "cs") && strcmp(args[i+1], "va")) {
                 fprintf(stderr, "The voting method specified doesn't exist.\n");
                 return false;
             }
@@ -118,9 +118,14 @@ int tagParser(int count, char *args[], csvType *Vote, char **CsvName, char **Log
                     }
 
                     if(!strcmp(args[i], "-l")) {
-                        if(args[i+1][0] != '-') {
-                            *Logs = malloc(sizeof(char) * (strlen(args[i+1])+1));
-                            strcpy(*Logs, args[i+1]);
+                        if(i<count-1) {
+                            if(args[i+1][0] != '-') {
+                                *Logs = malloc(sizeof(char) * (strlen(args[i+1])+1));
+                                strcpy(*Logs, args[i+1]);
+                            } else {
+                                *Logs = malloc(sizeof(char) * 7);
+                                strcpy(*Logs, "stdout");
+                            }
                         } else {
                             *Logs = malloc(sizeof(char) * 7);
                             strcpy(*Logs, "stdout");

@@ -1,16 +1,16 @@
 #include "../../header/csv.h"
 
 char *ftos(FILE *f) {
-        char *str = malloc(sizeof(char) * (lenFile(f) + 1));
-        char c = fgetc(f);
-        int i = 0;
-        while(c != EOF) {
-            str[i] = c;
-            c = fgetc(f);
-            i++;
-        }
-        str[i] = '\0';
-        return str;
+    char *str = malloc(sizeof(char) * (lenFile(f) + 1));
+    char c = fgetc(f);
+    int i = 0;
+    while(c != EOF) {
+        str[i] = c;
+        c = fgetc(f);
+        i++;
+    }
+    str[i] = '\0';
+    return str;
 }
 
 int lenFile(FILE *f) {
@@ -51,7 +51,7 @@ dyn_mat_str openMatrix(FILE *f, csvType vote) {
    if(vote == BALLOT) {
        offset=3;
    } else {
-       offset=0;
+       offset=1;
    }
    initDynCharMat(&matVote, nbRows, nbCols, offset);
 

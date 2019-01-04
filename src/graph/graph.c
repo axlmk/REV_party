@@ -32,10 +32,10 @@ int generateFile(list duel) {
         fclose(f);
         FILE *f2 = fopen("src/python/graph.py", "w");
         if(f2 == NULL) {
-            fputs("Error opening the output file.\n", stderr); //test
+            fputs("Error opening the output file.\n", stderr);
             return EXIT_FAILURE;
         } else {
-            int i;
+            int i = 0;
             while(str[i] != '#') {
                 fputc(str[i], f2);
                 i++;

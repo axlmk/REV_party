@@ -5,6 +5,7 @@
 #include <string.h>
 #include "sdd.h"
 #include "global.h"
+#include "graph.h"
 
 //void getSize(FILE *f, int row, int col);
 int lenFile(FILE *f);
