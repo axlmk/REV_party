@@ -1,4 +1,4 @@
-#include "../../../header/uninomial.h"
+#include "../../../header/uninominal.h"
 
 int sumCandidate(dyn_tab candidates) {
     int i, res;
@@ -9,7 +9,7 @@ int sumCandidate(dyn_tab candidates) {
 
 int trs(dyn_mat_str vote, char **winner, char **challenger, int *val1, int *val2, int *val3) {
     int i, ifir, isec, fir, sec, sum;
-    dyn_mat lol = calculus(vote);
+    dyn_mat lol = strmattointmat(vote);
     dyn_tab candidates = generateCandidateList(lol);
     sum = sumCandidate(candidates);
     if (isLog()) {

@@ -4,7 +4,7 @@ list duelToSchwartz(dyn_mat duel) { //rigoureusement la meme fonction que duelto
     int i, j;
     Elementlist e;
     list graph;
-    c/*reateList(&graph);
+    /*createList(&graph);
     for(i=0;i<duel.nbRows;i++) {
         for(j=0;j<i;j++) {
             if(duel.tab[i][j] > duel.tab[j][i]) {

@@ -1,13 +1,8 @@
 #include "../header/utils.h"
 
-int strtoi(char *s) {
-    char *c;
-    return strtol(s, &c, 10);
-}
-
-char *incr(char *s) { //a changer
-    int i = strtoi(s);
-    char *s2;
+char *incr(char *s) {
+    int i = atoi(s);
+    char *s2 = malloc(sizeof(char) * 10);
     i++;
     sprintf(s2, "%d", i);
     return s2;
@@ -22,13 +17,13 @@ dyn_mat ballottoduel(dyn_mat_str vote, csvType type) {
             if(type == BALLOT) {
                 for(k=vote.offset;k<vote.nbCols;k++) {
                     if(j!=k) {
-                        if(strtoi(vote.tab[i][j]) < strtoi(vote.tab[i][k])) {
+                        if(atoi(vote.tab[i][j]) < atoi(vote.tab[i][k])) {
                             duel.tab[j - vote.offset][k - vote.offset]++;
                         }
                     }
                 }
             } else {
-                duel.tab[i-1][j-vote.offset] = strtoi(vote.tab[i][j]);
+                duel.tab[i-1][j-vote.offset] = atoi(vote.tab[i][j]);
             }
         }
     }
@@ -37,4 +32,26 @@ dyn_mat ballottoduel(dyn_mat_str vote, csvType type) {
 
 bool isLog() {
     return logfpName != NULL;
+}
+
+list dueltolist(dyn_mat duel) {
+    int i, j;
+    Elementlist e;
+    list graph;
+    createList(&graph);
+    for(i=0;i<duel.nbRows;i++) {
+        for(j=0;j<i;j++) {
+            if(duel.tab[i][j] > duel.tab[j][i]) {
+                e.src = i;
+                e.dest = j;
+                e.weight = duel.tab[i][j];
+            } else {
+                e.src = j;
+                e.dest = i;
+                e.weight = duel.tab[j][i];
+            }
+            addTailList(&graph, e);
+        }
+    }
+    return graph;
 }

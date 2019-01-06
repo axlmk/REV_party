@@ -1,8 +1,8 @@
-#include "../../../header/uninomial.h"
+#include "../../../header/uninominal.h"
 
 int findMin(dyn_mat vote, int row) {
     int i, index = 0, mini = vote.tab[row][0];
-    for(i=1;i<vote.nbCols;i++) { //looking for the min in a specified row
+    for(i=1;i<vote.nbCols;i++) {
         if(vote.tab[row][i] < mini) {
             mini = vote.tab[row][i];
             index = i;
@@ -66,7 +66,7 @@ dyn_tab generateCandidateList(dyn_mat vote) {
 }
 
 int fptp(dyn_mat_str vote, char **winner, int *value) {
-    dyn_mat lol = calculus(vote);
+    dyn_mat lol = strmattointmat(vote);
     dyn_tab candidates = generateCandidateList(lol);
     if (isLog()) {
         fprintf(logfp, "---- First-past-the-post display : ----\n\n");

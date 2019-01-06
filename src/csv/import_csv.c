@@ -41,7 +41,7 @@ void countStr(char *str, int *nbRows, int *nbCols) {
     }
 }
 
-dyn_mat_str openMatrix(FILE *f, csvType vote) {
+dyn_mat_str ftomat(FILE *f, csvType vote) {
    char *str = ftos(f);
    char *token = NULL;
    int nbRows, nbCols, offset, j=0, i=-1;

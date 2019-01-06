@@ -22,15 +22,10 @@ list dueltolistranked(dyn_mat duel) {
     return graph;
 }
 
-list rankedPairs(dyn_mat duel) { //faut verifier que circuits fonctionne parce que c'est bizarre que pour vote.csv il en trouve aucu
+list rankedPairs(dyn_mat duel) {
     list ranked = dueltolistranked(duel);
     list temp;
     int i;
-    /*Elementlist e;
-    dumpList(ranked, stdout);
-    printf("--\n");
-    pickEltList(ranked, &e, 3);
-    printElt(e, stdout);*/
     createList(&temp);
     bubbleSortListWDown(&ranked);
     for(i=0;i<nbEltList(ranked);i++) {

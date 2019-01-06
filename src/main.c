@@ -1,12 +1,28 @@
 #include "../header/options.h"
 #include "../header/sdd.h"
 #include "../header/csv.h"
-#include "../header/uninomial.h"
+#include "../header/uninominal.h"
 #include "../header/list.h"
 #include "../header/graph.h"
 #include "../header/condorcet.h"
 #include "../header/irv.h"
 #include "../header/display.h"
+
+void getFile(char *name);
+
+void getFile(char *name) {
+    if(name != NULL) {
+        if(strcmp(name, "stdout")) {
+            logfp = fopen(name, "w");
+            if(logfp == NULL) {
+                perror("The name of the log file is invalid. So the log file will not be used.\n");
+                name = NULL;
+            }
+        } else {
+            logfp = stdout;
+        }
+    }
+}
 
 int main(int argc, char *argv[]) {
     csvType vote;
@@ -14,19 +30,9 @@ int main(int argc, char *argv[]) {
     char *csvName = NULL;
     if(!tagParser(argc, argv, &vote, &csvName, &logfpName, &method)) {
         FILE *csvFile = fopen(csvName, "r");
-        if(logfpName != NULL) {
-            if(strcmp(logfpName, "stdout")) {
-                logfp = fopen(logfpName, "w");
-                if(logfp == NULL) {
-                    perror("The name of the log file is invalid. So the log file will not be used.\n");
-                    logfpName = NULL;
-                }
-            } else {
-                logfp = stdout;
-            }
-        }
+        getFile(logfpName);
         if(csvFile != NULL) {
-            dyn_mat_str mat = openMatrix(csvFile, vote);
+            dyn_mat_str mat = ftomat(csvFile, vote);
             fclose(csvFile);
             char *winner = NULL;
             int pourcent = 0, tour = 0, nbCandidates = mat.nbCols - mat.offset, nbVoters = mat.nbRows - 1;
@@ -45,7 +51,7 @@ int main(int argc, char *argv[]) {
             } if(method == NULL || !strcmp(method, "cm")) {
                 dyn_mat duel = ballottoduel(mat, vote);
                 list duel_l = dueltolist(duel);
-                int ind = -1;
+                int ind = isCondorcetWinner(duel_l, nbCandidates);
                 if(isLog()) {
                     fprintf(logfp, "---- Condorcet minimax dislpay : ----\n\n");
                     fprintf(logfp, "Duel matrix :\n");
@@ -53,12 +59,11 @@ int main(int argc, char *argv[]) {
                     fprintf(logfp, "Corresponding list :\n");
                     dumpList(duel_l, logfp);
                 }
-                ind = isCondorcetWinner(duel_l, nbCandidates);
                 if(ind != -1) {
                     displayWinner(mat.tab[0][mat.offset + ind], "cm", nbCandidates, nbVoters, 0, 0);
                 } else {
                     ind = minimax(duel);
-                    if(ind == -1) { // l'affichage ne fait pas la difference entre ballot et duel
+                    if(ind == -1) {
                         displayWinner("egalite entre plusieurs candidats", "cm", nbCandidates, nbVoters, 0, 0);
                     } else {
                         displayWinner(mat.tab[0][ind + mat.offset], "cm", nbCandidates, nbVoters, 0, 0);
@@ -68,15 +73,25 @@ int main(int argc, char *argv[]) {
                 dyn_mat duel = ballottoduel(mat, vote);
                 list duel_l = dueltolist(duel);
                 int ind = isCondorcetWinner(duel_l, nbCandidates);
+                if(isLog()) {
+                    fprintf(logfp, "---- Condorcet ranked pairs dislpay : ----\n\n");
+                    fprintf(logfp, "Duel matrix :\n");
+                    printDynIntMat(duel, stdout);
+                    fprintf(logfp, "Corresponding list :\n");
+                    dumpList(duel_l, logfp);
+                }
                 if(ind != -1) {
+                    generateFile(duel_l);
                     displayWinner(mat.tab[0][mat.offset + ind], "cp", nbCandidates, nbVoters, 0, 0);
                 } else {
-                    ind = isCondorcetWinner(rankedPairs(duel), nbCandidates);
-                    printf("%d\n", ind);
-                    printf("%d\n", mat.offset);
+                    list temp = rankedPairs(duel);
+                    generateFile(temp);
+                    ind = isCondorcetWinner(temp, nbCandidates);
                     displayWinner(mat.tab[0][mat.offset + ind], "cp", nbCandidates, nbVoters, 0, 0);
                 }
-            /*} if(method == NULL || !strcmp(method, "cs")) {
+            } if(method == NULL || !strcmp(method, "cs")) {
+                puts("The schulze method is not available.");
+                /*
                 dyn_mat duel = ballottoduel(mat, vote);
                 list duel_l = dueltolist(duel);
                 if(isCondorcetWinner(duel_l, nbCandidates)) {
@@ -85,9 +100,7 @@ int main(int argc, char *argv[]) {
                     displayWinner(winner, "cs", nbCandidates, nbVoters, 0, 0);
                 }*/
             } if((method == NULL || !strcmp(method, "va")) && vote == BALLOT) {
-                printf("debug\n");
                 winner = instant_runnoff_voting(mat);
-                printf("debug\n");
                 displayWinner(winner, "va", nbCandidates, nbVoters, 0, 0);
             } if(method != NULL) {
                 if((!strcmp(method, "va") && vote != BALLOT) || (!strcmp(method, "uni2") && vote != BALLOT) || (!strcmp(method, "uni1") && vote != BALLOT)) {
@@ -98,10 +111,9 @@ int main(int argc, char *argv[]) {
             fputs("An error occured while opening file.\n", stderr);
         }
     } else {
-        fprintf(stderr, "An error occured.\n");
+        fputs("An error occured with the tags.\n", stderr);
         return EXIT_FAILURE;
     }
-
     free(logfpName);
     free(csvName);
     free(method);

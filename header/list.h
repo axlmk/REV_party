@@ -2,17 +2,12 @@
 #define LIST_H_
 
 #include "./sdd.h"
-// taille maximale de la list statique
+// maximum size of the list
 #define DIMMAX 100
-// constante  pour indiquer que la list est vide (par convention)
+// constant to define an empty lisg
 #define VIDE -1
 
 typedef w_arc Elementlist;
-
-void getElt(Elementlist *e);
-void cpyElt(Elementlist *target, Elementlist source);
-void printElt(Elementlist e, FILE *fp);
-bool cmpElt(Elementlist e1, Elementlist e2);
 
 struct list{
     Elementlist arrList[DIMMAX];
@@ -21,6 +16,11 @@ struct list{
 };
 
 typedef struct list list;
+
+void getElt(Elementlist *e);
+void cpyElt(Elementlist *target, Elementlist source);
+void printElt(Elementlist e, FILE *fp);
+bool cmpElt(Elementlist e1, Elementlist e2);
 
 int nbEltList(list lst); // nombre d'éléments
 void createList(list *p); // renvoie une list statique
@@ -33,10 +33,12 @@ void tailList(list p, Elementlist *e); // renvoie l'élément de fin
 bool emptyList(list p); // renvoie true si la pile est vide, false sinon
 bool fullList(list p); // renvoie true si la pile est pleine, false sinon
 void dumpList(list p,FILE *fp); // affiche le contenu de la list
+void dumpListGraph(list p, FILE *fp);
 void swapEltList(Elementlist *a,Elementlist *b); // échange deux éléments de la list
-void bubbleSortList(list *p); // trie la list
-void bubbleSortListWDown(list *p);
+void bubbleSortListWDown(list *p); //trie la list
 void bubbleSortListWUp(list *p);
 void pickEltList(list l,Elementlist *e,int index); // renvoie l'élément n° index
 bool belongEltList(list p,Elementlist e); // true si l'élément est dans la list
+list dueltolist(dyn_mat duel);
+
 #endif

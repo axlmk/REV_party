@@ -1,12 +1,9 @@
 #ifndef SDD_H_
 #define SDD_H_
 
+#include "global.h"
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #define MAX(a,b) (((a)>(b))?(a):(b))
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdbool.h>
 
 //dynamic table of integers
 typedef struct dyn_tab{
@@ -52,4 +49,5 @@ void init_tab_int(int *tab, int dim, int value);
 void init_mat_int(int **mat, int nbRows, int nbCols, int value);
 
 void initDynCharMat(dyn_mat_str *s_tabmots, int nbRows, int nbCols, int offset);
+
 #endif

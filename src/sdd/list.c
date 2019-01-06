@@ -141,22 +141,6 @@ void swapEltList(Elementlist *a, Elementlist *b) {
     cpyElt(a, c);
 }
 
-void bubbleSortList(list *p) {
-    /*
-    pour i allant de taille de T - 1 à 1
-    pour j allant de 0 à i - 1
-    si T[j+1] < T[j]
-    échanger(T[j+1], T[j])
-    */
-    int i, j;
-    for(i=nbEltList(*p) - 1;i>0;i--) {
-        for(j=0;j<i;j++) {
-            if(p->arrList[j+1].src < p->arrList[j].src) //a changer en weight si besoin est
-                swapEltList(&p->arrList[j+1], &p->arrList[j]);
-        }
-    }
-}
-
 void bubbleSortListWDown(list *p) {
     int i, j;
     for(i=nbEltList(*p) - 1;i>0;i--) {
@@ -177,7 +161,6 @@ void bubbleSortListWUp(list *p) {
     }
 }
 
-
 void pickEltList(list l, Elementlist *e, int index) {
     if(emptyList(l)) {
         fprintf(stderr, "There is no element to return, because the list is empty.\n");
@@ -186,7 +169,6 @@ void pickEltList(list l, Elementlist *e, int index) {
             fprintf(stderr, "The index is not valid.\n");
         } else if(index >= l.head && index < l.head + l.nbElt) {
                 cpyElt(e, l.arrList[index]);
-                //cpyElt(e, l.arrList[l.head + l.nbElt - 1]);
         } else {
             fprintf(stderr, "The element indexed is not valid.\n");
         }
@@ -210,4 +192,19 @@ bool belongEltList(list p,Elementlist e) {
         }
     }
     return false;
+}
+
+void dumpListGraph(list p, FILE *fp) {
+    int i;
+    if(emptyList(p)) {
+        fprintf(stderr, "There is nothing to display because the list is empty.\n");
+    } else {
+        for(i=0;i<p.nbElt;i++) {
+            if(p.head + i >= DIMMAX) {
+                fprintf(fp, "G.add_edges_from([(%d, %d)], weight=%d)\n", p.arrList[p.head + i - DIMMAX].src, p.arrList[p.head + i - DIMMAX].dest, p.arrList[p.head + i - DIMMAX].weight);
+            } else {
+                fprintf(fp, "G.add_edges_from([(%d, %d)], weight=%d)\n", p.arrList[p.head + i].src, p.arrList[p.head + i].dest, p.arrList[p.head + i].weight);
+            }
+        }
+    }
 }

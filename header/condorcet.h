@@ -1,14 +1,7 @@
 #ifndef CONDORCET_H_
 #define CONDORCET_H_
 
-#include "global.h"
-#include "list.h"
-#include "sdd.h"
-#include "circuit.h"
-#include "utils.h"
-#include "graph.h"
-//#define MAX(a, b) ((a>)?(printf("TRUE\n")):printf("FALSE\n"))
-//CODE
+#include "ballot.h"
 
 int minimax(dyn_mat duel);
 
@@ -19,6 +12,5 @@ list rankedPairs(dyn_mat duel);
 
 list duelToSchwartz(dyn_mat duel);
 int schulze(dyn_mat duel);
-
 
 #endif
