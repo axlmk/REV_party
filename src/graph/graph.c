@@ -1,6 +1,9 @@
 #include "../../header/graph.h"
 
 int generateFile(list duel) {
+    /// \brief Génère le fichier python servant à afficher les graphes
+    /// \param[in] duel : Matrice de duels
+    /// \return Entier stipulant du bon fonctionnement de la fonction
     FILE *f = fopen("src/python/pollTests.py", "r");
     if(f == NULL) {
         fputs("Error opening the input file.\n", stderr);

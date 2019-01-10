@@ -1,6 +1,10 @@
 #include "../../header/irv.h"
 
 int getWinner(dyn_tab candidates, int sum) {
+    /// \brief Détermine si un des candidats a gagné avec la majorité des voix
+    /// \param[in] candidates : Liste des candidats avec leurs points
+    /// \param[in] sum : Somme totale des voix des candidats
+    /// \return L'index du candidat gagnant ou -1
     int i;
     for(i=0;i<candidates.dim;i++)
         if(candidates.tab[i] >= sum/2)
@@ -9,6 +13,9 @@ int getWinner(dyn_tab candidates, int sum) {
 }
 
 int minCandidates(dyn_tab candidates) {
+    /// \brief Trouve le candidat dans la liste avec le minimum de points
+    /// \param[in] candidates : Liste des candidats
+    /// \return L'index du candidat ayant le minimum de points
     int i, min = candidates.tab[0], ind = 0;
     for(i=1;i<candidates.dim;i++) {
         if(candidates.tab[i] < min && candidates.tab[i] >= 0) {
@@ -20,12 +27,18 @@ int minCandidates(dyn_tab candidates) {
 }
 
 void rmLowerCandidate(dyn_tab *candidates, dyn_mat *ballot) {
+    /// \brief Enlève le candidat ayant le moins de points de la liste
+    /// \param[in, out] candidates : Liste des candidats
+    /// \param[in, out] ballot : Matrice de votes
     int ind = minCandidates(*candidates);
     candidates->tab[ind] = -1;
     incrementBallot(ballot, ind);
 }
 
 int sumCandidateH(dyn_tab candidates) {
+    /// \brief Fait la somme des points des candidats s'ils sont toujours valides
+    /// \param[in] candidates : Liste des candidats
+    /// \return La somme voulue
     int i, res=0;
     for(i=0;i<candidates.dim;i++) {
         if(candidates.tab[i] != -1)
@@ -33,7 +46,11 @@ int sumCandidateH(dyn_tab candidates) {
     }
     return res;
 }
+
 void incrementBallot(dyn_mat *ballot, int ind) {
+    /// \brief Augmente le vote dans la matrice de vote pour les candidats toujours en lice
+    /// \param[in, out] ballot : Matrice de votes
+    /// \param[in] ind : Index par rapport auquel il faut augmenter le score
     int i, j;
     for(i=0;i<ballot->nbRows;i++) {
         for(j=0;j<ballot->nbCols;j++) {
@@ -45,6 +62,9 @@ void incrementBallot(dyn_mat *ballot, int ind) {
 }
 
 dyn_mat strmattointmat(dyn_mat_str ballot) {
+    /// \brief Transforme une matrice de vote de caractères en matrice de vote d'entiers
+    /// \param[in] ballot : Matrice de votes
+    /// \return Matrice de votes
     dyn_mat vote;
     createDynIntMat(&vote, ballot.nbRows-1, ballot.nbCols - ballot.offset);
     int i, j;
@@ -57,6 +77,9 @@ dyn_mat strmattointmat(dyn_mat_str ballot) {
 }
 
 void initCandidates(dyn_tab *candidates, dyn_mat ballot) {
+    /// \brief Crée et initialise une liste de candidats grâce à une matrice de votes
+    /// \param[in, out] candidates : Liste de candidats
+    /// \param[in] ballot : Matrice de votes
     int i;
     for(i=0;i<candidates->dim;i++) {
         if(candidates->tab[i] != -1)
@@ -70,6 +93,11 @@ void initCandidates(dyn_tab *candidates, dyn_mat ballot) {
 }
 
 int minim(int *nbr, int n, dyn_tab candidates) {
+    /// \brief Renvoie l'index du candidat avec le minimum de points dans une ligne de la matric de vote
+    /// \param[in, out] nbr : Ligne de la matrice de vote
+    /// \param[in] n : Nombre de candidats
+    /// \param[in] candidates : Liste des candidats
+    /// \return L'index du candidats gagnant ou -1 s'il y a une égalité de points
     int i, min = nbr[0], ind = 0;
     for(i=1;i<n;i++) {
         if(candidates.tab[i] != -1) {
@@ -85,6 +113,9 @@ int minim(int *nbr, int n, dyn_tab candidates) {
 }
 
 char *instant_runnoff_voting(dyn_mat_str ballot) {
+    /// \brief Renvoie le nom du candidat ayant gagné selon la méthode vote alternatif
+    /// \param[in] ballot : Matrice de votes en caractères
+    /// \return Nom du candidant gagnant
     int win=0;
     dyn_mat ballotInt = strmattointmat(ballot);
     dyn_tab candidates = generateCandidateList(ballotInt);

@@ -1,6 +1,9 @@
 #include "../../../header/condorcet.h"
 
 list dueltolistranked(dyn_mat duel) {
+    /// \brief Transforme une matrice de duel en liste adaptée pour la méthode rangement par pairs
+    /// \param[in] duel : Matrice de duels
+    /// \return La liste adaptée
     int i, j;
     Elementlist e;
     list graph;
@@ -23,6 +26,9 @@ list dueltolistranked(dyn_mat duel) {
 }
 
 list rankedPairs(dyn_mat duel) {
+    /// \brief Renvoie la liste des candidats sans circuits
+    /// \param[in] duel : Matrice de duels
+    /// \return Liste des candidats
     list ranked = dueltolistranked(duel);
     list temp;
     int i;

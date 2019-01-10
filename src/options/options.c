@@ -1,6 +1,10 @@
 #include "../../header/options.h"
 
 bool syntaxChecker(int count, char *args[]) {
+    /// \brief Vérifie que la commande, d'un point de vue des options, est correcte syntaxiquement
+    /// \param[in] count : Le nombre d'options utilisées
+    /// \param[in] args : Le tableau d'arguments
+    /// \return Un booléen
     int i;
     bool d = false, ie = false, m = false, l = false;
     for(i=1;i<count;i++) {
@@ -61,7 +65,11 @@ bool syntaxChecker(int count, char *args[]) {
     return d == true || ie == true;
 }
 
-bool cmpExt(char *s, const char *ext) { //compare l'extension d'un fichier avec une extension donnee
+bool cmpExt(char *s, const char *ext) {
+    /// \brief Compare si un nom de fichier à la même extension que celle souhaitée
+    /// \param[in] s : Nom de fichier
+    /// \param[in] ext : Extension souhaitée
+    /// \return Un booléen
     int i, lenExt = strlen(ext), lenS = strlen(s);
     for(i=0;i<lenExt;i++) {
         if(s[lenS - 1 - i] != ext[lenExt - i - 1]) {
@@ -72,6 +80,10 @@ bool cmpExt(char *s, const char *ext) { //compare l'extension d'un fichier avec 
 }
 
 bool semanticChecker(int count, char *args[]) {
+    /// \brief Vérifie que la commande, d'un point de vue des options, est correcte sémantiquement
+    /// \param[in] count : Le nombre d'options utilisées
+    /// \param[in] args : Le tableau d'arguments
+    /// \return Un booléen
     int i;
     for(i=1;i<count;i++) {
         if(!strcmp(args[i], "-d") || !strcmp(args[i], "-i")) {
@@ -93,6 +105,14 @@ bool semanticChecker(int count, char *args[]) {
 }
 
 int tagParser(int count, char *args[], csvType *Vote, char **CsvName, char **Logs, char **Method) {
+    /// \brief Vérifie que les arguments sont correctes par rapport aux spécifications attendues et renvoie les infos nécessaires au fonctionnement du programme
+    /// \param[in] count : Nombre d'arguments
+    /// \param[in] args : Tableau de ces arguments
+    /// \param[out] Vote : Type d'ouverture du fichier CSV
+    /// \param[out] CsvName : Nom du fichier CSV
+    /// \param[out] Logs : Nom du fichier de log à utiliser (si NULL alors on n'utilisera pas les logs)
+    /// \param[out] Method : Nom de la méthode à utiliser
+    /// \return Un entier stipulant que le traitement des options s'est bien passé
     if(count < 2) {
         fprintf(stderr, "Usage : %s -i " UND "file.csv" CLA " | -d " UND "file.csv" CLA " [-l [" UND "file.txt" CLA "]] [-m " UND "method" CLA "]\n", args[0]);
         return EXIT_FAILURE;

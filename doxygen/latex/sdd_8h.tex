@@ -1,0 +1,279 @@
+\hypertarget{sdd_8h}{}\section{header/sdd.h File Reference}
+\label{sdd_8h}\index{header/sdd.\+h@{header/sdd.\+h}}
+
+
+Définie toutes les structures de données ainsi que les fonctions qui y sont liées.  
+
+
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+Include dependency graph for sdd.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdyn__tab}{dyn\+\_\+tab}
+\begin{DoxyCompactList}\small\item\em Tableau dynamique d\textquotesingle{}entiers à une dimension. \end{DoxyCompactList}\item 
+struct \hyperlink{structdyn__mat}{dyn\+\_\+mat}
+\begin{DoxyCompactList}\small\item\em Matrice dynamique d\textquotesingle{}entiers. \end{DoxyCompactList}\item 
+struct \hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str}
+\begin{DoxyCompactList}\small\item\em Matrice dynamique de chaines de caractères. \end{DoxyCompactList}\item 
+struct \hyperlink{structw__arc}{w\+\_\+arc}
+\begin{DoxyCompactList}\small\item\em Arc orienté ayant un poid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sdd_8h_a3acffbd305ee72dcd4593c0d8af64a4f}\label{sdd_8h_a3acffbd305ee72dcd4593c0d8af64a4f}} 
+\#define {\bfseries M\+IN}(a,  b)~(((a)$<$(b))?(a)\+:(b))
+\item 
+\mbox{\Hypertarget{sdd_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}\label{sdd_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}} 
+\#define {\bfseries M\+AX}(a,  b)~(((a)$>$(b))?(a)\+:(b))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sdd_8h_a3a58ec7bce611079d7575a8244603226}\label{sdd_8h_a3a58ec7bce611079d7575a8244603226}} 
+typedef struct \hyperlink{structdyn__tab}{dyn\+\_\+tab} {\bfseries dyn\+\_\+tab}
+\item 
+\mbox{\Hypertarget{sdd_8h_ad6363dc1eb4e22dd2e4b2610f84ab60e}\label{sdd_8h_ad6363dc1eb4e22dd2e4b2610f84ab60e}} 
+typedef struct \hyperlink{structdyn__mat}{dyn\+\_\+mat} {\bfseries dyn\+\_\+mat}
+\item 
+\mbox{\Hypertarget{sdd_8h_a3ece91131444fcd01a2853194bff4bc3}\label{sdd_8h_a3ece91131444fcd01a2853194bff4bc3}} 
+typedef struct \hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} {\bfseries dyn\+\_\+mat\+\_\+str}
+\item 
+\mbox{\Hypertarget{sdd_8h_a3eed3b9f8d9b7b64b746c8d06ac25c11}\label{sdd_8h_a3eed3b9f8d9b7b64b746c8d06ac25c11}} 
+typedef struct \hyperlink{structw__arc}{w\+\_\+arc} {\bfseries w\+\_\+arc}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int $\ast$ \hyperlink{sdd_8h_a0b922a39f2c73f8c9cb25cc1c55f2d4f}{create\+Int\+Tab} (int dim)
+\item 
+int $\ast$$\ast$ \hyperlink{sdd_8h_a32d7a3ec86dcc5bb0bca6171b8216842}{create\+Int\+Mat} (int nb\+Rows, int nb\+Cols)
+\item 
+void \hyperlink{sdd_8h_a3825e7c8abf6c8c895b05310fb2366b0}{print\+Int\+Tab} (int $\ast$tab, int dim, F\+I\+LE $\ast$logfp)
+\item 
+void \hyperlink{sdd_8h_ae925e524a9677abe8921859941827016}{print\+Int\+Mat} (int $\ast$$\ast$duels\+\_\+mat, int nb\+Rows, int nb\+Cols, F\+I\+LE $\ast$logfp)
+\item 
+void \hyperlink{sdd_8h_a1e9517fcfdde1c5d4b163e8d37241405}{create\+Dyn\+Int\+Tab} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} $\ast$st\+Tab, int dim)
+\item 
+void \hyperlink{sdd_8h_af09fe315d92bad1d529ec18f10a29024}{create\+Dyn\+Int\+Mat} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} $\ast$st\+Tab, int nb\+Rows, int nb\+Cols)
+\item 
+void \hyperlink{sdd_8h_a09bda5c6ac95a58eb0d3554e8bd765e0}{create\+Dyn\+Char\+Mat} (\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} $\ast$s\+\_\+tabmots)
+\item 
+void \hyperlink{sdd_8h_a6621b4d73d9d5b577869c79b6ef39f65}{print\+Dyn\+Int\+Tab} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} t\+\_\+tab, F\+I\+LE $\ast$logfp)
+\item 
+void \hyperlink{sdd_8h_a0c1d76d513b5a7fd8bdc52e885d2bff1}{print\+Dyn\+Int\+Mat} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} t\+\_\+tab, F\+I\+LE $\ast$logfp)
+\item 
+void \hyperlink{sdd_8h_a5669f04c34aa99fd9b7b680eca53960e}{print\+Dyn\+Char\+Mat} (\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} t\+\_\+tabmots, F\+I\+LE $\ast$logfp)
+\item 
+void \hyperlink{sdd_8h_a7d0500944812808f80a24bee091d1d88}{init\+\_\+tab\+\_\+int} (int $\ast$tab, int dim, int value)
+\item 
+void \hyperlink{sdd_8h_a73a61c9255756d36b16e3ea830bd3812}{init\+\_\+mat\+\_\+int} (int $\ast$$\ast$mat, int nb\+Rows, int nb\+Cols, int value)
+\item 
+void \hyperlink{sdd_8h_adab8d101b588bd1a754c3a1402fa5e48}{init\+Dyn\+Char\+Mat} (\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} $\ast$s\+\_\+tabmots, int nb\+Rows, int nb\+Cols, int offset)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Définie toutes les structures de données ainsi que les fonctions qui y sont liées. 
+
+\begin{DoxyAuthor}{Author}
+Axel G\+A\+U\+T\+H\+I\+ER 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sdd_8h_a09bda5c6ac95a58eb0d3554e8bd765e0}\label{sdd_8h_a09bda5c6ac95a58eb0d3554e8bd765e0}} 
+\index{sdd.\+h@{sdd.\+h}!create\+Dyn\+Char\+Mat@{create\+Dyn\+Char\+Mat}}
+\index{create\+Dyn\+Char\+Mat@{create\+Dyn\+Char\+Mat}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{create\+Dyn\+Char\+Mat()}{createDynCharMat()}}
+{\footnotesize\ttfamily void create\+Dyn\+Char\+Mat (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} $\ast$}]{s\+\_\+tabmots }\end{DoxyParamCaption})}
+
+Créer une structure \hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em st\+Tab} & \+: Matrice à créer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_af09fe315d92bad1d529ec18f10a29024}\label{sdd_8h_af09fe315d92bad1d529ec18f10a29024}} 
+\index{sdd.\+h@{sdd.\+h}!create\+Dyn\+Int\+Mat@{create\+Dyn\+Int\+Mat}}
+\index{create\+Dyn\+Int\+Mat@{create\+Dyn\+Int\+Mat}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{create\+Dyn\+Int\+Mat()}{createDynIntMat()}}
+{\footnotesize\ttfamily void create\+Dyn\+Int\+Mat (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat} $\ast$}]{st\+Tab,  }\item[{int}]{nb\+Rows,  }\item[{int}]{nb\+Cols }\end{DoxyParamCaption})}
+
+Créer une structure \hyperlink{structdyn__mat}{dyn\+\_\+mat} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em st\+Tab} & \+: Matrice à créer \\
+\hline
+\mbox{\tt in}  & {\em nb\+Rows} & \+: Nombre de lignes \\
+\hline
+\mbox{\tt in}  & {\em nb\+Cols} & \+: Nombre de colonnes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_a1e9517fcfdde1c5d4b163e8d37241405}\label{sdd_8h_a1e9517fcfdde1c5d4b163e8d37241405}} 
+\index{sdd.\+h@{sdd.\+h}!create\+Dyn\+Int\+Tab@{create\+Dyn\+Int\+Tab}}
+\index{create\+Dyn\+Int\+Tab@{create\+Dyn\+Int\+Tab}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{create\+Dyn\+Int\+Tab()}{createDynIntTab()}}
+{\footnotesize\ttfamily void create\+Dyn\+Int\+Tab (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab} $\ast$}]{st\+Tab,  }\item[{int}]{dim }\end{DoxyParamCaption})}
+
+Créer une structure \hyperlink{structdyn__tab}{dyn\+\_\+tab} 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em st\+Tab} & \+: Tableau à créer \\
+\hline
+\mbox{\tt in}  & {\em dim} & \+: Nombre de cases \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_a32d7a3ec86dcc5bb0bca6171b8216842}\label{sdd_8h_a32d7a3ec86dcc5bb0bca6171b8216842}} 
+\index{sdd.\+h@{sdd.\+h}!create\+Int\+Mat@{create\+Int\+Mat}}
+\index{create\+Int\+Mat@{create\+Int\+Mat}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{create\+Int\+Mat()}{createIntMat()}}
+{\footnotesize\ttfamily int$\ast$$\ast$ create\+Int\+Mat (\begin{DoxyParamCaption}\item[{int}]{nb\+Rows,  }\item[{int}]{nb\+Cols }\end{DoxyParamCaption})}
+
+Alloue la mémoire nécessaire pour une matrice d\textquotesingle{}entier dynamique 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em nb\+Rows} & \+: Nombre de lignes \\
+\hline
+\mbox{\tt in}  & {\em nb\+Cols} & \+: Nombre de colonnes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La matrice allouée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sdd_8h_a0b922a39f2c73f8c9cb25cc1c55f2d4f}\label{sdd_8h_a0b922a39f2c73f8c9cb25cc1c55f2d4f}} 
+\index{sdd.\+h@{sdd.\+h}!create\+Int\+Tab@{create\+Int\+Tab}}
+\index{create\+Int\+Tab@{create\+Int\+Tab}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{create\+Int\+Tab()}{createIntTab()}}
+{\footnotesize\ttfamily int$\ast$ create\+Int\+Tab (\begin{DoxyParamCaption}\item[{int}]{dim }\end{DoxyParamCaption})}
+
+Alloue la mémoire nécessaire pour un tableau d\textquotesingle{}entier dynamique à une dimension 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em dim} & \+: Taille du tableau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le tableau alloué 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sdd_8h_a73a61c9255756d36b16e3ea830bd3812}\label{sdd_8h_a73a61c9255756d36b16e3ea830bd3812}} 
+\index{sdd.\+h@{sdd.\+h}!init\+\_\+mat\+\_\+int@{init\+\_\+mat\+\_\+int}}
+\index{init\+\_\+mat\+\_\+int@{init\+\_\+mat\+\_\+int}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+mat\+\_\+int()}{init\_mat\_int()}}
+{\footnotesize\ttfamily void init\+\_\+mat\+\_\+int (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{mat,  }\item[{int}]{nb\+Rows,  }\item[{int}]{nb\+Cols,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+Initialise une matrice d\textquotesingle{}entiers dynamique avec une valeur 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em mat} & \+: Matrice à initialiser \\
+\hline
+\mbox{\tt in}  & {\em nb\+Rows} & \+: Nombre de lignes du tableau \\
+\hline
+\mbox{\tt in}  & {\em nb\+Cols} & \+: Nombre de colonnes du tableau \\
+\hline
+\mbox{\tt in}  & {\em value} & \+: Valeur avec laquelle initialiser \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_a7d0500944812808f80a24bee091d1d88}\label{sdd_8h_a7d0500944812808f80a24bee091d1d88}} 
+\index{sdd.\+h@{sdd.\+h}!init\+\_\+tab\+\_\+int@{init\+\_\+tab\+\_\+int}}
+\index{init\+\_\+tab\+\_\+int@{init\+\_\+tab\+\_\+int}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+tab\+\_\+int()}{init\_tab\_int()}}
+{\footnotesize\ttfamily void init\+\_\+tab\+\_\+int (\begin{DoxyParamCaption}\item[{int $\ast$}]{tab,  }\item[{int}]{dim,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+Initialise un tableau d\textquotesingle{}entiers dynamique avec une valeur 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em tab} & \+: Tableau à initialiser \\
+\hline
+\mbox{\tt in}  & {\em dim} & \+: Dimension du tableau \\
+\hline
+\mbox{\tt in}  & {\em value} & \+: Valeur avec laquelle initialiser \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_adab8d101b588bd1a754c3a1402fa5e48}\label{sdd_8h_adab8d101b588bd1a754c3a1402fa5e48}} 
+\index{sdd.\+h@{sdd.\+h}!init\+Dyn\+Char\+Mat@{init\+Dyn\+Char\+Mat}}
+\index{init\+Dyn\+Char\+Mat@{init\+Dyn\+Char\+Mat}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{init\+Dyn\+Char\+Mat()}{initDynCharMat()}}
+{\footnotesize\ttfamily void init\+Dyn\+Char\+Mat (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} $\ast$}]{s\+\_\+tabmots,  }\item[{int}]{nb\+Rows,  }\item[{int}]{nb\+Cols,  }\item[{int}]{offset }\end{DoxyParamCaption})}
+
+Crée et initialise une matrice de chaines de caractères dynamique 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em s\+\_\+tabmots} & \+: Matrice à initialiser \\
+\hline
+\mbox{\tt in}  & {\em nb\+Rows} & \+: Nombre de lignes du tableau \\
+\hline
+\mbox{\tt in}  & {\em nb\+Cols} & \+: Nombre de colonnes du tableau \\
+\hline
+\mbox{\tt in}  & {\em offset} & \+: Nombre de lignes à ignorer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_a5669f04c34aa99fd9b7b680eca53960e}\label{sdd_8h_a5669f04c34aa99fd9b7b680eca53960e}} 
+\index{sdd.\+h@{sdd.\+h}!print\+Dyn\+Char\+Mat@{print\+Dyn\+Char\+Mat}}
+\index{print\+Dyn\+Char\+Mat@{print\+Dyn\+Char\+Mat}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{print\+Dyn\+Char\+Mat()}{printDynCharMat()}}
+{\footnotesize\ttfamily void print\+Dyn\+Char\+Mat (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str}}]{t\+\_\+tabmots,  }\item[{F\+I\+LE $\ast$}]{logfp }\end{DoxyParamCaption})}
+
+Affiche une structure \hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} sur un fichier 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em t\+\_\+tabmots} & \+: La structure à afficher \\
+\hline
+\mbox{\tt in,out}  & {\em logfp} & \+: Fichier où afficher le tableau \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_a0c1d76d513b5a7fd8bdc52e885d2bff1}\label{sdd_8h_a0c1d76d513b5a7fd8bdc52e885d2bff1}} 
+\index{sdd.\+h@{sdd.\+h}!print\+Dyn\+Int\+Mat@{print\+Dyn\+Int\+Mat}}
+\index{print\+Dyn\+Int\+Mat@{print\+Dyn\+Int\+Mat}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{print\+Dyn\+Int\+Mat()}{printDynIntMat()}}
+{\footnotesize\ttfamily void print\+Dyn\+Int\+Mat (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat}}]{t\+\_\+tab,  }\item[{F\+I\+LE $\ast$}]{logfp }\end{DoxyParamCaption})}
+
+Affiche une structure \hyperlink{structdyn__mat}{dyn\+\_\+mat} sur un fichier 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em t\+\_\+tab} & \+: La structure à afficher \\
+\hline
+\mbox{\tt in,out}  & {\em logfp} & \+: Fichier où afficher le tableau \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_a6621b4d73d9d5b577869c79b6ef39f65}\label{sdd_8h_a6621b4d73d9d5b577869c79b6ef39f65}} 
+\index{sdd.\+h@{sdd.\+h}!print\+Dyn\+Int\+Tab@{print\+Dyn\+Int\+Tab}}
+\index{print\+Dyn\+Int\+Tab@{print\+Dyn\+Int\+Tab}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{print\+Dyn\+Int\+Tab()}{printDynIntTab()}}
+{\footnotesize\ttfamily void print\+Dyn\+Int\+Tab (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab}}]{t\+\_\+tab,  }\item[{F\+I\+LE $\ast$}]{logfp }\end{DoxyParamCaption})}
+
+Affiche une structure \hyperlink{structdyn__tab}{dyn\+\_\+tab} sur un fichier 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em t\+\_\+tab} & \+: La structure à afficher \\
+\hline
+\mbox{\tt in,out}  & {\em logfp} & \+: Fichier où afficher le tableau \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_ae925e524a9677abe8921859941827016}\label{sdd_8h_ae925e524a9677abe8921859941827016}} 
+\index{sdd.\+h@{sdd.\+h}!print\+Int\+Mat@{print\+Int\+Mat}}
+\index{print\+Int\+Mat@{print\+Int\+Mat}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{print\+Int\+Mat()}{printIntMat()}}
+{\footnotesize\ttfamily void print\+Int\+Mat (\begin{DoxyParamCaption}\item[{int $\ast$$\ast$}]{duels\+\_\+mat,  }\item[{int}]{nb\+Rows,  }\item[{int}]{nb\+Cols,  }\item[{F\+I\+LE $\ast$}]{logfp }\end{DoxyParamCaption})}
+
+Affiche une matrice dynamique d\textquotesingle{}entiers sur un fichier 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em duels\+\_\+mat} & \+: La matrice à afficher \\
+\hline
+\mbox{\tt in}  & {\em nb\+Rows} & \+: Nombre de lignes \\
+\hline
+\mbox{\tt in}  & {\em nb\+Cols} & \+: Nombre de colonnes \\
+\hline
+\mbox{\tt in,out}  & {\em logfp} & \+: Fichier où afficher le tableau \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sdd_8h_a3825e7c8abf6c8c895b05310fb2366b0}\label{sdd_8h_a3825e7c8abf6c8c895b05310fb2366b0}} 
+\index{sdd.\+h@{sdd.\+h}!print\+Int\+Tab@{print\+Int\+Tab}}
+\index{print\+Int\+Tab@{print\+Int\+Tab}!sdd.\+h@{sdd.\+h}}
+\subsubsection{\texorpdfstring{print\+Int\+Tab()}{printIntTab()}}
+{\footnotesize\ttfamily void print\+Int\+Tab (\begin{DoxyParamCaption}\item[{int $\ast$}]{tab,  }\item[{int}]{dim,  }\item[{F\+I\+LE $\ast$}]{logfp }\end{DoxyParamCaption})}
+
+Affiche un tableau d\textquotesingle{}entier dynamique sur un fichier 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tab} & \+: Le tableau à afficher \\
+\hline
+\mbox{\tt in}  & {\em dim} & \+: Taille du tableau \\
+\hline
+\mbox{\tt in,out}  & {\em logfp} & \+: Fichier où afficher le tableau \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,116 @@
+\hypertarget{options_8h}{}\section{header/options.h File Reference}
+\label{options_8h}\index{header/options.\+h@{header/options.\+h}}
+
+
+Gère les options passées en paramètres à l\textquotesingle{}ouverture de l\textquotesingle{}exécutable.  
+
+
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+Include dependency graph for options.\+h\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{options_8h_a31489de17c5c7b0920ab7aa54e6a7695}\label{options_8h_a31489de17c5c7b0920ab7aa54e6a7695}} 
+\#define {\bfseries U\+ND}~\char`\"{}\textbackslash{}x1b\mbox{[}4m\char`\"{}
+\item 
+\mbox{\Hypertarget{options_8h_a4c1d657f5bdc5a2a31df55fc726d80d5}\label{options_8h_a4c1d657f5bdc5a2a31df55fc726d80d5}} 
+\#define {\bfseries C\+LA}~\char`\"{}\textbackslash{}x1b\mbox{[}0m\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{options_8h_a24f54841c354a779a643f5cb0f8977ed}{tag\+Parser} (int count, char $\ast$args\mbox{[}$\,$\mbox{]}, csv\+Type $\ast$Vote, char $\ast$$\ast$csv\+Name, char $\ast$$\ast$logs, char $\ast$$\ast$Method)
+\item 
+bool \hyperlink{options_8h_a401833cc5ac7bef240a201da801ad030}{syntax\+Checker} (int count, char $\ast$args\mbox{[}$\,$\mbox{]})
+\item 
+bool \hyperlink{options_8h_a9fe882cacef512ac2f5884905ce08f39}{semantic\+Checker} (int count, char $\ast$args\mbox{[}$\,$\mbox{]})
+\item 
+bool \hyperlink{options_8h_a15827dae3e962c6ea38da13a8d46f1e0}{cmp\+Ext} (char $\ast$s, const char $\ast$ext)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Gère les options passées en paramètres à l\textquotesingle{}ouverture de l\textquotesingle{}exécutable. 
+
+\begin{DoxyAuthor}{Author}
+Axel G\+A\+U\+T\+H\+I\+ER 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{options_8h_a15827dae3e962c6ea38da13a8d46f1e0}\label{options_8h_a15827dae3e962c6ea38da13a8d46f1e0}} 
+\index{options.\+h@{options.\+h}!cmp\+Ext@{cmp\+Ext}}
+\index{cmp\+Ext@{cmp\+Ext}!options.\+h@{options.\+h}}
+\subsubsection{\texorpdfstring{cmp\+Ext()}{cmpExt()}}
+{\footnotesize\ttfamily bool cmp\+Ext (\begin{DoxyParamCaption}\item[{char $\ast$}]{s,  }\item[{const char $\ast$}]{ext }\end{DoxyParamCaption})}
+
+Compare si un nom de fichier à la même extension que celle souhaitée 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & \+: Nom de fichier \\
+\hline
+\mbox{\tt in}  & {\em ext} & \+: Extension souhaitée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un booléen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{options_8h_a9fe882cacef512ac2f5884905ce08f39}\label{options_8h_a9fe882cacef512ac2f5884905ce08f39}} 
+\index{options.\+h@{options.\+h}!semantic\+Checker@{semantic\+Checker}}
+\index{semantic\+Checker@{semantic\+Checker}!options.\+h@{options.\+h}}
+\subsubsection{\texorpdfstring{semantic\+Checker()}{semanticChecker()}}
+{\footnotesize\ttfamily bool semantic\+Checker (\begin{DoxyParamCaption}\item[{int}]{count,  }\item[{char $\ast$}]{args\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Vérifie que la commande, d\textquotesingle{}un point de vue des options, est correcte sémantiquement 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em count} & \+: Le nombre d\textquotesingle{}options utilisées \\
+\hline
+\mbox{\tt in}  & {\em args} & \+: Le tableau d\textquotesingle{}arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un booléen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{options_8h_a401833cc5ac7bef240a201da801ad030}\label{options_8h_a401833cc5ac7bef240a201da801ad030}} 
+\index{options.\+h@{options.\+h}!syntax\+Checker@{syntax\+Checker}}
+\index{syntax\+Checker@{syntax\+Checker}!options.\+h@{options.\+h}}
+\subsubsection{\texorpdfstring{syntax\+Checker()}{syntaxChecker()}}
+{\footnotesize\ttfamily bool syntax\+Checker (\begin{DoxyParamCaption}\item[{int}]{count,  }\item[{char $\ast$}]{args\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Vérifie que la commande, d\textquotesingle{}un point de vue des options, est correcte syntaxiquement 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em count} & \+: Le nombre d\textquotesingle{}options utilisées \\
+\hline
+\mbox{\tt in}  & {\em args} & \+: Le tableau d\textquotesingle{}arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un booléen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{options_8h_a24f54841c354a779a643f5cb0f8977ed}\label{options_8h_a24f54841c354a779a643f5cb0f8977ed}} 
+\index{options.\+h@{options.\+h}!tag\+Parser@{tag\+Parser}}
+\index{tag\+Parser@{tag\+Parser}!options.\+h@{options.\+h}}
+\subsubsection{\texorpdfstring{tag\+Parser()}{tagParser()}}
+{\footnotesize\ttfamily int tag\+Parser (\begin{DoxyParamCaption}\item[{int}]{count,  }\item[{char $\ast$}]{args\mbox{[}$\,$\mbox{]},  }\item[{csv\+Type $\ast$}]{Vote,  }\item[{char $\ast$$\ast$}]{csv\+Name,  }\item[{char $\ast$$\ast$}]{logs,  }\item[{char $\ast$$\ast$}]{Method }\end{DoxyParamCaption})}
+
+Vérifie que les arguments sont correctes par rapport aux spécifications attendues et renvoie les infos nécessaires au fonctionnement du programme 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em count} & \+: Nombre d\textquotesingle{}arguments \\
+\hline
+\mbox{\tt in}  & {\em args} & \+: Tableau de ces arguments \\
+\hline
+\mbox{\tt out}  & {\em Vote} & \+: Type d\textquotesingle{}ouverture du fichier C\+SV \\
+\hline
+\mbox{\tt out}  & {\em Csv\+Name} & \+: Nom du fichier C\+SV \\
+\hline
+\mbox{\tt out}  & {\em Logs} & \+: Nom du fichier de log à utiliser (si N\+U\+LL alors on n\textquotesingle{}utilisera pas les logs) \\
+\hline
+\mbox{\tt out}  & {\em Method} & \+: Nom de la méthode à utiliser \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un entier stipulant que le traitement des options s\textquotesingle{}est bien passé 
+\end{DoxyReturn}

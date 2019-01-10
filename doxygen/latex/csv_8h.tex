@@ -1,0 +1,98 @@
+\hypertarget{csv_8h}{}\section{header/csv.h File Reference}
+\label{csv_8h}\index{header/csv.\+h@{header/csv.\+h}}
+
+
+Transforme un fichier C\+SV en structure de données utilisable.  
+
+
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sdd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}graph.\+h\char`\"{}}\newline
+Include dependency graph for csv.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{csv_8h_af95d82212b9dac2a75c57bb09d426b6c}{ftos} (F\+I\+LE $\ast$f)
+\item 
+int \hyperlink{csv_8h_a63e51d9f5418846c4baa326da25194ef}{len\+File} (F\+I\+LE $\ast$f)
+\item 
+\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} \hyperlink{csv_8h_a06e0a2840510da97376b134ae27b8965}{ftomat} (F\+I\+LE $\ast$f, csv\+Type vote)
+\item 
+void \hyperlink{csv_8h_adcd7f9b0a0ddf1b579a26b454fb5d496}{count\+Str} (char $\ast$str, int $\ast$nb\+Rows, int $\ast$nb\+Cols)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Transforme un fichier C\+SV en structure de données utilisable. 
+
+\begin{DoxyAuthor}{Author}
+Axel G\+A\+U\+T\+H\+I\+ER 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{csv_8h_adcd7f9b0a0ddf1b579a26b454fb5d496}\label{csv_8h_adcd7f9b0a0ddf1b579a26b454fb5d496}} 
+\index{csv.\+h@{csv.\+h}!count\+Str@{count\+Str}}
+\index{count\+Str@{count\+Str}!csv.\+h@{csv.\+h}}
+\subsubsection{\texorpdfstring{count\+Str()}{countStr()}}
+{\footnotesize\ttfamily void count\+Str (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{int $\ast$}]{nb\+Rows,  }\item[{int $\ast$}]{nb\+Cols }\end{DoxyParamCaption})}
+
+Donne le nombre de colonnes et de lignes d\textquotesingle{}un fichier C\+SV transformé en chaine de caractères 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em str} & \+: Chaine de caractères \\
+\hline
+\mbox{\tt out}  & {\em nb\+Rows} & \+: Nombre de lignes \\
+\hline
+\mbox{\tt out}  & {\em nb\+Cols} & \+: Nombre de colonnes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{csv_8h_a06e0a2840510da97376b134ae27b8965}\label{csv_8h_a06e0a2840510da97376b134ae27b8965}} 
+\index{csv.\+h@{csv.\+h}!ftomat@{ftomat}}
+\index{ftomat@{ftomat}!csv.\+h@{csv.\+h}}
+\subsubsection{\texorpdfstring{ftomat()}{ftomat()}}
+{\footnotesize\ttfamily \hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} ftomat (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f,  }\item[{csv\+Type}]{vote }\end{DoxyParamCaption})}
+
+Convertit un fichier C\+SV en une matrice de chaines de caractères 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & \+: Fichier \\
+\hline
+\mbox{\tt in}  & {\em vote} & \+: Type de fichier C\+SV \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrice de chaines de caractères 
+\end{DoxyReturn}
+\mbox{\Hypertarget{csv_8h_af95d82212b9dac2a75c57bb09d426b6c}\label{csv_8h_af95d82212b9dac2a75c57bb09d426b6c}} 
+\index{csv.\+h@{csv.\+h}!ftos@{ftos}}
+\index{ftos@{ftos}!csv.\+h@{csv.\+h}}
+\subsubsection{\texorpdfstring{ftos()}{ftos()}}
+{\footnotesize\ttfamily char$\ast$ ftos (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f }\end{DoxyParamCaption})}
+
+Convertit un fichier en une chaine de caractères 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & \+: Fichier à convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La chaine de caractères 
+\end{DoxyReturn}
+\mbox{\Hypertarget{csv_8h_a63e51d9f5418846c4baa326da25194ef}\label{csv_8h_a63e51d9f5418846c4baa326da25194ef}} 
+\index{csv.\+h@{csv.\+h}!len\+File@{len\+File}}
+\index{len\+File@{len\+File}!csv.\+h@{csv.\+h}}
+\subsubsection{\texorpdfstring{len\+File()}{lenFile()}}
+{\footnotesize\ttfamily int len\+File (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{f }\end{DoxyParamCaption})}
+
+Obtient le nombre de caractères d\textquotesingle{}un fichier 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & \+: Fichier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La longueur du fichier 
+\end{DoxyReturn}

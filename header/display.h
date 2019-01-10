@@ -1,3 +1,8 @@
+/// \file display.h
+/// \brief Gère l'affichage du vainqueur
+/// \author Axel GAUTHIER
+/// \date 2019
+
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
 

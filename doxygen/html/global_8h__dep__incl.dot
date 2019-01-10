@@ -1,0 +1,43 @@
+digraph "header/global.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node6 [label="header/global.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="header/ballot.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ballot_8h.html",tooltip="Centralise les fonctions communes aux algorithmes de méthodes de scrutin. "];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="header/condorcet.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$condorcet_8h.html",tooltip="Calcul du gagnant grâce aux fonctions de condorcet et leurs dépendances. "];
+  Node7 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="header/irv.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$irv_8h.html",tooltip="Calcul du gagnant grâce à la fonction vote alternatif et ses dépendances. "];
+  Node7 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="header/uninominal.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$uninominal_8h.html",tooltip="Calcul du gagnant grâce aux fonctions uninominals un et deux tours et leurs dépendances. "];
+  Node6 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="header/sdd.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$sdd_8h.html",tooltip="Définie toutes les structures de données ainsi que les fonctions qui y sont liées. "];
+  Node11 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="header/list.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$list_8h.html",tooltip="Définie toutes les listes et arcs ainsi que les fonctions qui y sont liées. "];
+  Node12 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="header/circuit.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$circuit_8h_source.html"];
+  Node13 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="header/utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8h.html",tooltip="Donne des outils utiles pour plusieurs fonctions dans tous le programme. "];
+  Node14 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="header/graph.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graph_8h.html",tooltip="Gère l&#39;écriture dans un fichier python d&#39;une liste. "];
+  Node15 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="header/csv.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$csv_8h.html",tooltip="Transforme un fichier CSV en structure de données utilisable. "];
+  Node16 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="header/display.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$display_8h.html",tooltip="Gère l&#39;affichage du vainqueur. "];
+  Node6 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="header/options.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$options_8h.html",tooltip="Gère les options passées en paramètres à l&#39;ouverture de l&#39;exécutable. "];
+}

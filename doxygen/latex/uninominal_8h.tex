@@ -1,0 +1,103 @@
+\hypertarget{uninominal_8h}{}\section{header/uninominal.h File Reference}
+\label{uninominal_8h}\index{header/uninominal.\+h@{header/uninominal.\+h}}
+
+
+Calcul du gagnant grâce aux fonctions uninominals un et deux tours et leurs dépendances.  
+
+
+{\ttfamily \#include \char`\"{}ballot.\+h\char`\"{}}\newline
+Include dependency graph for uninominal.\+h\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structdyn__tab}{dyn\+\_\+tab} \hyperlink{uninominal_8h_a52453c13e981212c2d627b61c83d193c}{create\+Candidate\+List} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} vote)
+\item 
+bool \hyperlink{uninominal_8h_acf875f6d7a223073eabff6c5d03fc14b}{list\+Valid} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} candidates)
+\item 
+int \hyperlink{uninominal_8h_a84a0d0942653165b126ec7da3116ed0c}{fptp} (\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} vote, char $\ast$$\ast$winner, int $\ast$value)
+\item 
+int \hyperlink{uninominal_8h_ace3b7a26f50e5a71b77b70131299aa0d}{trs} (\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} vote, char $\ast$$\ast$winner, char $\ast$$\ast$challenger, int $\ast$val1, int $\ast$val2, int $\ast$val3)
+\item 
+int \hyperlink{uninominal_8h_ad65a499c98ba1574d8aaa94b8096ab67}{sum\+Candidate} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} candidates)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calcul du gagnant grâce aux fonctions uninominals un et deux tours et leurs dépendances. 
+
+\begin{DoxyAuthor}{Author}
+Axel G\+A\+U\+T\+H\+I\+ER 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{uninominal_8h_a52453c13e981212c2d627b61c83d193c}\label{uninominal_8h_a52453c13e981212c2d627b61c83d193c}} 
+\index{uninominal.\+h@{uninominal.\+h}!create\+Candidate\+List@{create\+Candidate\+List}}
+\index{create\+Candidate\+List@{create\+Candidate\+List}!uninominal.\+h@{uninominal.\+h}}
+\subsubsection{\texorpdfstring{create\+Candidate\+List()}{createCandidateList()}}
+{\footnotesize\ttfamily \hyperlink{structdyn__tab}{dyn\+\_\+tab} create\+Candidate\+List (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat}}]{vote }\end{DoxyParamCaption})}
+
+Créer une liste de candidats 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vote} & \+: Matrice de votes return Une liste de candidats \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{uninominal_8h_a84a0d0942653165b126ec7da3116ed0c}\label{uninominal_8h_a84a0d0942653165b126ec7da3116ed0c}} 
+\index{uninominal.\+h@{uninominal.\+h}!fptp@{fptp}}
+\index{fptp@{fptp}!uninominal.\+h@{uninominal.\+h}}
+\subsubsection{\texorpdfstring{fptp()}{fptp()}}
+{\footnotesize\ttfamily int fptp (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str}}]{vote,  }\item[{char $\ast$$\ast$}]{winner,  }\item[{int $\ast$}]{value }\end{DoxyParamCaption})}
+
+Renvoie l\textquotesingle{}index du candidat ayant gagné selon la méthode uninominal à un tour \mbox{\Hypertarget{uninominal_8h_acf875f6d7a223073eabff6c5d03fc14b}\label{uninominal_8h_acf875f6d7a223073eabff6c5d03fc14b}} 
+\index{uninominal.\+h@{uninominal.\+h}!list\+Valid@{list\+Valid}}
+\index{list\+Valid@{list\+Valid}!uninominal.\+h@{uninominal.\+h}}
+\subsubsection{\texorpdfstring{list\+Valid()}{listValid()}}
+{\footnotesize\ttfamily bool list\+Valid (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab}}]{candidates }\end{DoxyParamCaption})}
+
+Informe si la liste ne contient que des candidats ayant reçu des votes 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em candidates} & \+: Matrice de votes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un boléen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uninominal_8h_ad65a499c98ba1574d8aaa94b8096ab67}\label{uninominal_8h_ad65a499c98ba1574d8aaa94b8096ab67}} 
+\index{uninominal.\+h@{uninominal.\+h}!sum\+Candidate@{sum\+Candidate}}
+\index{sum\+Candidate@{sum\+Candidate}!uninominal.\+h@{uninominal.\+h}}
+\subsubsection{\texorpdfstring{sum\+Candidate()}{sumCandidate()}}
+{\footnotesize\ttfamily int sum\+Candidate (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab}}]{candidates }\end{DoxyParamCaption})}
+
+Renvoie la somme des voix de tous les candidats 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em candidates} & \+: Liste des candidats \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La somme des voix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uninominal_8h_ace3b7a26f50e5a71b77b70131299aa0d}\label{uninominal_8h_ace3b7a26f50e5a71b77b70131299aa0d}} 
+\index{uninominal.\+h@{uninominal.\+h}!trs@{trs}}
+\index{trs@{trs}!uninominal.\+h@{uninominal.\+h}}
+\subsubsection{\texorpdfstring{trs()}{trs()}}
+{\footnotesize\ttfamily int trs (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str}}]{vote,  }\item[{char $\ast$$\ast$}]{winner,  }\item[{char $\ast$$\ast$}]{challenger,  }\item[{int $\ast$}]{val1,  }\item[{int $\ast$}]{val2,  }\item[{int $\ast$}]{val3 }\end{DoxyParamCaption})}
+
+Donne le ou les vainqueurs selon la méthode uninominal à deux tours 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vote} & \+: Matrice de votes \\
+\hline
+\mbox{\tt out}  & {\em winner} & \+: Vainqueur \\
+\hline
+\mbox{\tt out}  & {\em challenger} & \+: Deuxième élu \\
+\hline
+\mbox{\tt out}  & {\em val1} & \+: Pourcentage vainqueur 1er tour \\
+\hline
+\mbox{\tt out}  & {\em val2} & \+: Pourcentage deuxième élu 1er tour \\
+\hline
+\mbox{\tt out}  & {\em val3} & \+: Pourcentage vainqueur 2ème tour \\
+\hline
+\end{DoxyParams}

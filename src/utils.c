@@ -1,6 +1,9 @@
 #include "../header/utils.h"
 
 char *incr(char *s) {
+    /// \brief Incrément une chiffre considéré comme une chaine de caractères
+    /// \param[in] s : Chiffre à incrémenter
+    /// \return La chaine incrémentée de 1
     int i = atoi(s);
     char *s2 = malloc(sizeof(char) * 10);
     i++;
@@ -9,6 +12,9 @@ char *incr(char *s) {
 }
 
 dyn_mat ballottoduel(dyn_mat_str vote, csvType type) {
+    /// \brief Convertie une matrice de chaine de caractères en matrice d'entiers, en ne tenant compte que des nombres
+    /// \param[in] vote : matrice de chaines de caractères
+    /// \param[in] type : type de donnée indiquant comme traiter la matrice
     int i, j, k;
     dyn_mat duel;
     createDynIntMat(&duel, vote.nbCols-vote.offset, vote.nbCols-vote.offset);
@@ -31,10 +37,13 @@ dyn_mat ballottoduel(dyn_mat_str vote, csvType type) {
 }
 
 bool isLog() {
+    /// \brief Indique si le fichier de log a été demandé
     return logfpName != NULL;
 }
 
 list dueltolist(dyn_mat duel) {
+    /// \brief Convertie une matrice de duel en liste
+    /// \param[in] duel : Matrice de duel
     int i, j;
     Elementlist e;
     list graph;

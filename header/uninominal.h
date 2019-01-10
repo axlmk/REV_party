@@ -1,3 +1,8 @@
+/// \file uninominal.h
+/// \brief Calcul du gagnant grâce aux fonctions uninominals un et deux tours et leurs dépendances
+/// \author Axel GAUTHIER
+/// \date 2019
+
 #ifndef UNINOMIAL_H_
 #define UNINOMIAL_H_
 

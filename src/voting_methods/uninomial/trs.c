@@ -1,6 +1,9 @@
 #include "../../../header/uninominal.h"
 
 int sumCandidate(dyn_tab candidates) {
+    /// \brief Renvoie la somme des voix de tous les candidats
+    /// \param[in] candidates : Liste des candidats
+    /// \return La somme des voix
     int i, res;
     for(i=0;i<candidates.dim;i++)
         res += candidates.tab[i];
@@ -8,9 +11,16 @@ int sumCandidate(dyn_tab candidates) {
 }
 
 int trs(dyn_mat_str vote, char **winner, char **challenger, int *val1, int *val2, int *val3) {
+    /// \brief Donne le ou les vainqueurs selon la méthode uninominal à deux tours
+    /// \param[in] vote : Matrice de votes
+    /// \param[out] winner : Vainqueur
+    /// \param[out] challenger : Deuxième élu
+    /// \param[out] val1 : Pourcentage vainqueur 1er tour
+    /// \param[out] val2 : Pourcentage deuxième élu 1er tour
+    /// \param[out] val3 : Pourcentage vainqueur 2ème tour
     int i, ifir, isec, fir, sec, sum;
-    dyn_mat lol = strmattointmat(vote);
-    dyn_tab candidates = generateCandidateList(lol);
+    dyn_mat mat = strmattointmat(vote);
+    dyn_tab candidates = generateCandidateList(mat);
     sum = sumCandidate(candidates);
     if (isLog()) {
         fprintf(logfp, "---- Two-round system display : ----\n\n");
@@ -28,10 +38,10 @@ int trs(dyn_mat_str vote, char **winner, char **challenger, int *val1, int *val2
             *val2 = *val2 * 100 / (vote.nbRows - 1);
             sec = candidates.tab[isec];
             fir = sec = 0;
-            for(i=0;i<lol.nbRows;i++) {
-                if(lol.tab[i][ifir] < lol.tab[i][isec]) {
+            for(i=0;i<mat.nbRows;i++) {
+                if(mat.tab[i][ifir] < mat.tab[i][isec]) {
                     fir++;
-                } else if(lol.tab[i][ifir] > lol.tab[i][isec]) {
+                } else if(mat.tab[i][ifir] > mat.tab[i][isec]) {
                     sec++;
                 }
             }

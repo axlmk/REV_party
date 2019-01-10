@@ -7,6 +7,7 @@
 #include "../header/condorcet.h"
 #include "../header/irv.h"
 #include "../header/display.h"
+#include "../header/utils.h"
 
 void getFile(char *name);
 
@@ -33,6 +34,7 @@ int main(int argc, char *argv[]) {
         getFile(logfpName);
         if(csvFile != NULL) {
             dyn_mat_str mat = ftomat(csvFile, vote);
+            printDynCharMat(mat, stdout);
             fclose(csvFile);
             char *winner = NULL;
             int pourcent = 0, tour = 0, nbCandidates = mat.nbCols - mat.offset, nbVoters = mat.nbRows - 1;
@@ -55,7 +57,7 @@ int main(int argc, char *argv[]) {
                 if(isLog()) {
                     fprintf(logfp, "---- Condorcet minimax dislpay : ----\n\n");
                     fprintf(logfp, "Duel matrix :\n");
-                    printDynIntMat(duel, stdout);
+                    printDynIntMat(duel, logfp);
                     fprintf(logfp, "Corresponding list :\n");
                     dumpList(duel_l, logfp);
                 }
@@ -76,7 +78,7 @@ int main(int argc, char *argv[]) {
                 if(isLog()) {
                     fprintf(logfp, "---- Condorcet ranked pairs dislpay : ----\n\n");
                     fprintf(logfp, "Duel matrix :\n");
-                    printDynIntMat(duel, stdout);
+                    printDynIntMat(duel, logfp);
                     fprintf(logfp, "Corresponding list :\n");
                     dumpList(duel_l, logfp);
                 }

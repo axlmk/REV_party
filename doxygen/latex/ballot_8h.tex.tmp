@@ -1,0 +1,99 @@
+\hypertarget{ballot_8h}{}\section{header/ballot.h File Reference}
+\label{ballot_8h}\index{header/ballot.\+h@{header/ballot.\+h}}
+
+
+Centralise les fonctions communes aux algorithmes de méthodes de scrutin.  
+
+
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sdd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}circuit.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}graph.\+h\char`\"{}}\newline
+Include dependency graph for ballot.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structdyn__mat}{dyn\+\_\+mat} \hyperlink{ballot_8h_af8fed1d799fbd90a7c189edde588cc2e}{strmattointmat} (\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} ballot)
+\item 
+int \hyperlink{ballot_8h_ae82199cded1b76088e83dc34a0812bde}{find\+Min} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} vote, int row)
+\item 
+int \hyperlink{ballot_8h_a096f7884be8d2eb90e81fbac18537125}{find\+Best\+Candidate} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} candidates, int $\ast$value)
+\item 
+\hyperlink{structdyn__tab}{dyn\+\_\+tab} \hyperlink{ballot_8h_a1c73fe61f508c341bb0b581341226a1f}{generate\+Candidate\+List} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} vote)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Centralise les fonctions communes aux algorithmes de méthodes de scrutin. 
+
+\begin{DoxyAuthor}{Author}
+Axel G\+A\+U\+T\+H\+I\+ER \textbackslash{}2019 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ballot_8h_a096f7884be8d2eb90e81fbac18537125}\label{ballot_8h_a096f7884be8d2eb90e81fbac18537125}} 
+\index{ballot.\+h@{ballot.\+h}!find\+Best\+Candidate@{find\+Best\+Candidate}}
+\index{find\+Best\+Candidate@{find\+Best\+Candidate}!ballot.\+h@{ballot.\+h}}
+\subsubsection{\texorpdfstring{find\+Best\+Candidate()}{findBestCandidate()}}
+{\footnotesize\ttfamily int find\+Best\+Candidate (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab}}]{candidates,  }\item[{int $\ast$}]{value }\end{DoxyParamCaption})}
+
+Renvoie l\textquotesingle{}index du candidat avec le maxium de points 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em candidates} & \+: Matrice de votes \\
+\hline
+\mbox{\tt out}  & {\em val} & \+: Valeur du candidat gagnant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index du meilleur candidat 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ballot_8h_ae82199cded1b76088e83dc34a0812bde}\label{ballot_8h_ae82199cded1b76088e83dc34a0812bde}} 
+\index{ballot.\+h@{ballot.\+h}!find\+Min@{find\+Min}}
+\index{find\+Min@{find\+Min}!ballot.\+h@{ballot.\+h}}
+\subsubsection{\texorpdfstring{find\+Min()}{findMin()}}
+{\footnotesize\ttfamily int find\+Min (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat}}]{vote,  }\item[{int}]{row }\end{DoxyParamCaption})}
+
+Trouve l\textquotesingle{}index de la matrice de votes gagnant 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vote} & \+: Matrice de votes \\
+\hline
+\mbox{\tt in}  & {\em row} & \+: Ligne de la matrice de votes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index du candidats gagnant s\textquotesingle{}il y en a un, sinon -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ballot_8h_a1c73fe61f508c341bb0b581341226a1f}\label{ballot_8h_a1c73fe61f508c341bb0b581341226a1f}} 
+\index{ballot.\+h@{ballot.\+h}!generate\+Candidate\+List@{generate\+Candidate\+List}}
+\index{generate\+Candidate\+List@{generate\+Candidate\+List}!ballot.\+h@{ballot.\+h}}
+\subsubsection{\texorpdfstring{generate\+Candidate\+List()}{generateCandidateList()}}
+{\footnotesize\ttfamily \hyperlink{structdyn__tab}{dyn\+\_\+tab} generate\+Candidate\+List (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat}}]{vote }\end{DoxyParamCaption})}
+
+Génère la liste des voix des candidats 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vote} & \+: Matrice de votes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La liste des candidats 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ballot_8h_af8fed1d799fbd90a7c189edde588cc2e}\label{ballot_8h_af8fed1d799fbd90a7c189edde588cc2e}} 
+\index{ballot.\+h@{ballot.\+h}!strmattointmat@{strmattointmat}}
+\index{strmattointmat@{strmattointmat}!ballot.\+h@{ballot.\+h}}
+\subsubsection{\texorpdfstring{strmattointmat()}{strmattointmat()}}
+{\footnotesize\ttfamily \hyperlink{structdyn__mat}{dyn\+\_\+mat} strmattointmat (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str}}]{ballot }\end{DoxyParamCaption})}
+
+Transforme une matrice de vote de caractères en matrice de vote d\textquotesingle{}entiers 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ballot} & \+: Matrice de votes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrice de votes 
+\end{DoxyReturn}

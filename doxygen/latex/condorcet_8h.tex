@@ -1,0 +1,99 @@
+\hypertarget{condorcet_8h}{}\section{header/condorcet.h File Reference}
+\label{condorcet_8h}\index{header/condorcet.\+h@{header/condorcet.\+h}}
+
+
+Calcul du gagnant grâce aux fonctions de condorcet et leurs dépendances.  
+
+
+{\ttfamily \#include \char`\"{}ballot.\+h\char`\"{}}\newline
+Include dependency graph for condorcet.\+h\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{condorcet_8h_af4549d7303aa43dccc5bdf295624ef2d}{minimax} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} duel)
+\item 
+int \hyperlink{condorcet_8h_aaf6998632ae0db631b8593020ac084ae}{is\+Condorcet\+Winner} (\hyperlink{structlist}{list} duel, int nb\+Candidate)
+\item 
+\hyperlink{structlist}{list} \hyperlink{condorcet_8h_aca1854f3b1da3e4ab13866722e0f6baf}{dueltolistranked} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} duel)
+\item 
+\hyperlink{structlist}{list} \hyperlink{condorcet_8h_ada0057492616716b30541d2ec0908925}{ranked\+Pairs} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} duel)
+\item 
+\mbox{\Hypertarget{condorcet_8h_a6ba4211c85a2a031bff01285b63d923e}\label{condorcet_8h_a6ba4211c85a2a031bff01285b63d923e}} 
+\hyperlink{structlist}{list} {\bfseries duel\+To\+Schwartz} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} duel)
+\item 
+\mbox{\Hypertarget{condorcet_8h_af482f4c02056fdcdd88078758efb17b3}\label{condorcet_8h_af482f4c02056fdcdd88078758efb17b3}} 
+int {\bfseries schulze} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} duel)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calcul du gagnant grâce aux fonctions de condorcet et leurs dépendances. 
+
+\begin{DoxyAuthor}{Author}
+Axel G\+A\+U\+T\+H\+I\+ER 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{condorcet_8h_aca1854f3b1da3e4ab13866722e0f6baf}\label{condorcet_8h_aca1854f3b1da3e4ab13866722e0f6baf}} 
+\index{condorcet.\+h@{condorcet.\+h}!dueltolistranked@{dueltolistranked}}
+\index{dueltolistranked@{dueltolistranked}!condorcet.\+h@{condorcet.\+h}}
+\subsubsection{\texorpdfstring{dueltolistranked()}{dueltolistranked()}}
+{\footnotesize\ttfamily \hyperlink{structlist}{list} dueltolistranked (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat}}]{duel }\end{DoxyParamCaption})}
+
+Transforme une matrice de duel en liste adaptée pour la méthode rangement par pairs 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em duel} & \+: Matrice de duels \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La liste adaptée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{condorcet_8h_aaf6998632ae0db631b8593020ac084ae}\label{condorcet_8h_aaf6998632ae0db631b8593020ac084ae}} 
+\index{condorcet.\+h@{condorcet.\+h}!is\+Condorcet\+Winner@{is\+Condorcet\+Winner}}
+\index{is\+Condorcet\+Winner@{is\+Condorcet\+Winner}!condorcet.\+h@{condorcet.\+h}}
+\subsubsection{\texorpdfstring{is\+Condorcet\+Winner()}{isCondorcetWinner()}}
+{\footnotesize\ttfamily int is\+Condorcet\+Winner (\begin{DoxyParamCaption}\item[{\hyperlink{structlist}{list}}]{duel,  }\item[{int}]{nb\+Candidate }\end{DoxyParamCaption})}
+
+Renvoie l\textquotesingle{}index du vainqueur de condorcet 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em duel} & \+: Liste des duels \\
+\hline
+\mbox{\tt in}  & {\em nb\+Candidate} & \+: Nombre de candidats \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Renvoie l\textquotesingle{}index du gagnant s\textquotesingle{}il y en a un sinon -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{condorcet_8h_af4549d7303aa43dccc5bdf295624ef2d}\label{condorcet_8h_af4549d7303aa43dccc5bdf295624ef2d}} 
+\index{condorcet.\+h@{condorcet.\+h}!minimax@{minimax}}
+\index{minimax@{minimax}!condorcet.\+h@{condorcet.\+h}}
+\subsubsection{\texorpdfstring{minimax()}{minimax()}}
+{\footnotesize\ttfamily int minimax (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat}}]{duel }\end{DoxyParamCaption})}
+
+Renvoie l\textquotesingle{}index du candidat gagnant selon la méthode minimax 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em duel} & \+: Matrice de duels \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index du candidat gagnant 
+\end{DoxyReturn}
+\mbox{\Hypertarget{condorcet_8h_ada0057492616716b30541d2ec0908925}\label{condorcet_8h_ada0057492616716b30541d2ec0908925}} 
+\index{condorcet.\+h@{condorcet.\+h}!ranked\+Pairs@{ranked\+Pairs}}
+\index{ranked\+Pairs@{ranked\+Pairs}!condorcet.\+h@{condorcet.\+h}}
+\subsubsection{\texorpdfstring{ranked\+Pairs()}{rankedPairs()}}
+{\footnotesize\ttfamily \hyperlink{structlist}{list} ranked\+Pairs (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat}}]{duel }\end{DoxyParamCaption})}
+
+Renvoie la liste des candidats sans circuits 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em duel} & \+: Matrice de duels \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Liste des candidats 
+\end{DoxyReturn}

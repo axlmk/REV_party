@@ -1,3 +1,8 @@
+/// \file options.h
+/// \brief Gère les options passées en paramètres à l'ouverture de l'exécutable
+/// \author Axel GAUTHIER
+/// \date 2019
+
 #ifndef OPTIONS_H_
 #define OPTIONS_H_
 

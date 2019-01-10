@@ -1,0 +1,90 @@
+\hypertarget{utils_8h}{}\section{header/utils.h File Reference}
+\label{utils_8h}\index{header/utils.\+h@{header/utils.\+h}}
+
+
+Donne des outils utiles pour plusieurs fonctions dans tous le programme.  
+
+
+{\ttfamily \#include \char`\"{}global.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sdd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\newline
+Include dependency graph for utils.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{utils_8h_a0189076ce97e6f8133d4c7a5521ad13e}\label{utils_8h_a0189076ce97e6f8133d4c7a5521ad13e}} 
+\#define {\bfseries M\+A\+X\+\_\+\+N\+U\+M\+\_\+\+S\+I\+ZE}~5
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{utils_8h_ab1888f1279d9fa34cdb80634dabe6735}{incr} (char $\ast$s)
+\item 
+\hyperlink{structdyn__mat}{dyn\+\_\+mat} \hyperlink{utils_8h_aa959c49502625e3ae1b995af388c00b0}{ballottoduel} (\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} vote, csv\+Type type)
+\item 
+bool \hyperlink{utils_8h_aea98630823c118cc498df2f0ccaac934}{is\+Log} ()
+\item 
+\hyperlink{structlist}{list} \hyperlink{utils_8h_a5b3c8c40824016213273f95053f9e46f}{dueltolist} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} duel)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Donne des outils utiles pour plusieurs fonctions dans tous le programme. 
+
+\begin{DoxyAuthor}{Author}
+Axel G\+A\+U\+T\+H\+I\+ER 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{utils_8h_aa959c49502625e3ae1b995af388c00b0}\label{utils_8h_aa959c49502625e3ae1b995af388c00b0}} 
+\index{utils.\+h@{utils.\+h}!ballottoduel@{ballottoduel}}
+\index{ballottoduel@{ballottoduel}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{ballottoduel()}{ballottoduel()}}
+{\footnotesize\ttfamily \hyperlink{structdyn__mat}{dyn\+\_\+mat} ballottoduel (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str}}]{vote,  }\item[{csv\+Type}]{type }\end{DoxyParamCaption})}
+
+Convertie une matrice de chaine de caractères en matrice d\textquotesingle{}entiers, en ne tenant compte que des nombres 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em vote} & \+: matrice de chaines de caractères \\
+\hline
+\mbox{\tt in}  & {\em type} & \+: type de donnée indiquant comme traiter la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utils_8h_a5b3c8c40824016213273f95053f9e46f}\label{utils_8h_a5b3c8c40824016213273f95053f9e46f}} 
+\index{utils.\+h@{utils.\+h}!dueltolist@{dueltolist}}
+\index{dueltolist@{dueltolist}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{dueltolist()}{dueltolist()}}
+{\footnotesize\ttfamily \hyperlink{structlist}{list} dueltolist (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat}}]{duel }\end{DoxyParamCaption})}
+
+Convertie une matrice de duel en liste 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em duel} & \+: Matrice de duel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utils_8h_ab1888f1279d9fa34cdb80634dabe6735}\label{utils_8h_ab1888f1279d9fa34cdb80634dabe6735}} 
+\index{utils.\+h@{utils.\+h}!incr@{incr}}
+\index{incr@{incr}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{incr()}{incr()}}
+{\footnotesize\ttfamily char$\ast$ incr (\begin{DoxyParamCaption}\item[{char $\ast$}]{s }\end{DoxyParamCaption})}
+
+Incrément une chiffre considéré comme une chaine de caractères 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & \+: Chiffre à incrémenter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La chaine incrémentée de 1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils_8h_aea98630823c118cc498df2f0ccaac934}\label{utils_8h_aea98630823c118cc498df2f0ccaac934}} 
+\index{utils.\+h@{utils.\+h}!is\+Log@{is\+Log}}
+\index{is\+Log@{is\+Log}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{is\+Log()}{isLog()}}
+{\footnotesize\ttfamily bool is\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Indique si le fichier de log a été demandé 

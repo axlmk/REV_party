@@ -1,3 +1,8 @@
+/// \file condorcet.h
+/// \brief Calcul du gagnant grâce aux fonctions de condorcet et leurs dépendances
+/// \author Axel GAUTHIER
+/// \date 2019
+
 #ifndef CONDORCET_H_
 #define CONDORCET_H_
 

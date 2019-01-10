@@ -1,3 +1,8 @@
+/// \file csv.h
+/// \brief Transforme un fichier CSV en structure de données utilisable
+/// \author Axel GAUTHIER
+/// \date 2019
+
 #ifndef CSV_H_
 #define CSV_H_
 

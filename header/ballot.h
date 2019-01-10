@@ -1,3 +1,8 @@
+/// \file ballot.h
+/// \brief Centralise les fonctions communes aux algorithmes de méthodes de scrutin
+/// \author Axel GAUTHIER
+/// \2019
+
 #ifndef BALLOT_H_
 #define BALLOT_H_
 

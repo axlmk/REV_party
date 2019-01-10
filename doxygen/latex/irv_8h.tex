@@ -1,0 +1,143 @@
+\hypertarget{irv_8h}{}\section{header/irv.h File Reference}
+\label{irv_8h}\index{header/irv.\+h@{header/irv.\+h}}
+
+
+Calcul du gagnant grâce à la fonction vote alternatif et ses dépendances.  
+
+
+{\ttfamily \#include \char`\"{}ballot.\+h\char`\"{}}\newline
+Include dependency graph for irv.\+h\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{irv_8h_a84e040854bac769353db4544bd12d1d2}{get\+Winner} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} candidates, int sum)
+\item 
+int \hyperlink{irv_8h_a69e77ecafac8cfbd35c6432824bd4962}{min\+Candidates} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} candidates)
+\item 
+void \hyperlink{irv_8h_a67aad83e25dc8eeeb33439d4a387057f}{rm\+Lower\+Candidate} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} $\ast$candidates, \hyperlink{structdyn__mat}{dyn\+\_\+mat} $\ast$ballot)
+\item 
+char $\ast$ \hyperlink{irv_8h_a391ffe501cddc3df8cead1aa5a5b7ad4}{instant\+\_\+runnoff\+\_\+voting} (\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str} ballot)
+\item 
+void \hyperlink{irv_8h_a36b493a500eb571c9e2f8184c7a2bfdc}{increment\+Ballot} (\hyperlink{structdyn__mat}{dyn\+\_\+mat} $\ast$ballot, int ind)
+\item 
+int \hyperlink{irv_8h_a1bee701aeb6456545aa4f2220a7ebf40}{minim} (int $\ast$nbr, int n, \hyperlink{structdyn__tab}{dyn\+\_\+tab} candidates)
+\item 
+int \hyperlink{irv_8h_a565a4ff5a4b0af5c61b97527771e5b91}{sum\+CandidateH} (\hyperlink{structdyn__tab}{dyn\+\_\+tab} candidates)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calcul du gagnant grâce à la fonction vote alternatif et ses dépendances. 
+
+\begin{DoxyAuthor}{Author}
+Axel G\+A\+U\+T\+H\+I\+ER 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{irv_8h_a84e040854bac769353db4544bd12d1d2}\label{irv_8h_a84e040854bac769353db4544bd12d1d2}} 
+\index{irv.\+h@{irv.\+h}!get\+Winner@{get\+Winner}}
+\index{get\+Winner@{get\+Winner}!irv.\+h@{irv.\+h}}
+\subsubsection{\texorpdfstring{get\+Winner()}{getWinner()}}
+{\footnotesize\ttfamily int get\+Winner (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab}}]{candidates,  }\item[{int}]{sum }\end{DoxyParamCaption})}
+
+Détermine si un des candidats a gagné avec la majorité des voix 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em candidates} & \+: Liste des candidats avec leurs points \\
+\hline
+\mbox{\tt in}  & {\em sum} & \+: Somme totale des voix des candidats \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index du candidat gagnant ou -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{irv_8h_a36b493a500eb571c9e2f8184c7a2bfdc}\label{irv_8h_a36b493a500eb571c9e2f8184c7a2bfdc}} 
+\index{irv.\+h@{irv.\+h}!increment\+Ballot@{increment\+Ballot}}
+\index{increment\+Ballot@{increment\+Ballot}!irv.\+h@{irv.\+h}}
+\subsubsection{\texorpdfstring{increment\+Ballot()}{incrementBallot()}}
+{\footnotesize\ttfamily void increment\+Ballot (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat} $\ast$}]{ballot,  }\item[{int}]{ind }\end{DoxyParamCaption})}
+
+Augmente le vote dans la matrice de vote pour les candidats toujours en lice 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ballot} & \+: Matrice de votes \\
+\hline
+\mbox{\tt in}  & {\em ind} & \+: Index par rapport auquel il faut augmenter le score \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{irv_8h_a391ffe501cddc3df8cead1aa5a5b7ad4}\label{irv_8h_a391ffe501cddc3df8cead1aa5a5b7ad4}} 
+\index{irv.\+h@{irv.\+h}!instant\+\_\+runnoff\+\_\+voting@{instant\+\_\+runnoff\+\_\+voting}}
+\index{instant\+\_\+runnoff\+\_\+voting@{instant\+\_\+runnoff\+\_\+voting}!irv.\+h@{irv.\+h}}
+\subsubsection{\texorpdfstring{instant\+\_\+runnoff\+\_\+voting()}{instant\_runnoff\_voting()}}
+{\footnotesize\ttfamily char$\ast$ instant\+\_\+runnoff\+\_\+voting (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__mat__str}{dyn\+\_\+mat\+\_\+str}}]{ballot }\end{DoxyParamCaption})}
+
+Renvoie le nom du candidat ayant gagné selon la méthode vote alternatif 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ballot} & \+: Matrice de votes en caractères \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nom du candidant gagnant 
+\end{DoxyReturn}
+\mbox{\Hypertarget{irv_8h_a69e77ecafac8cfbd35c6432824bd4962}\label{irv_8h_a69e77ecafac8cfbd35c6432824bd4962}} 
+\index{irv.\+h@{irv.\+h}!min\+Candidates@{min\+Candidates}}
+\index{min\+Candidates@{min\+Candidates}!irv.\+h@{irv.\+h}}
+\subsubsection{\texorpdfstring{min\+Candidates()}{minCandidates()}}
+{\footnotesize\ttfamily int min\+Candidates (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab}}]{candidates }\end{DoxyParamCaption})}
+
+Trouve le candidat dans la liste avec le minimum de points 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em candidates} & \+: Liste des candidats \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index du candidat ayant le minimum de points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{irv_8h_a1bee701aeb6456545aa4f2220a7ebf40}\label{irv_8h_a1bee701aeb6456545aa4f2220a7ebf40}} 
+\index{irv.\+h@{irv.\+h}!minim@{minim}}
+\index{minim@{minim}!irv.\+h@{irv.\+h}}
+\subsubsection{\texorpdfstring{minim()}{minim()}}
+{\footnotesize\ttfamily int minim (\begin{DoxyParamCaption}\item[{int $\ast$}]{nbr,  }\item[{int}]{n,  }\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab}}]{candidates }\end{DoxyParamCaption})}
+
+Renvoie l\textquotesingle{}index du candidat avec le minimum de points dans une ligne de la matric de vote 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em nbr} & \+: Ligne de la matrice de vote \\
+\hline
+\mbox{\tt in}  & {\em n} & \+: Nombre de candidats \\
+\hline
+\mbox{\tt in}  & {\em candidates} & \+: Liste des candidats \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index du candidats gagnant ou -\/1 s\textquotesingle{}il y a une égalité de points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{irv_8h_a67aad83e25dc8eeeb33439d4a387057f}\label{irv_8h_a67aad83e25dc8eeeb33439d4a387057f}} 
+\index{irv.\+h@{irv.\+h}!rm\+Lower\+Candidate@{rm\+Lower\+Candidate}}
+\index{rm\+Lower\+Candidate@{rm\+Lower\+Candidate}!irv.\+h@{irv.\+h}}
+\subsubsection{\texorpdfstring{rm\+Lower\+Candidate()}{rmLowerCandidate()}}
+{\footnotesize\ttfamily void rm\+Lower\+Candidate (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab} $\ast$}]{candidates,  }\item[{\hyperlink{structdyn__mat}{dyn\+\_\+mat} $\ast$}]{ballot }\end{DoxyParamCaption})}
+
+Enlève le candidat ayant le moins de points de la liste 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em candidates} & \+: Liste des candidats \\
+\hline
+\mbox{\tt in,out}  & {\em ballot} & \+: Matrice de votes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{irv_8h_a565a4ff5a4b0af5c61b97527771e5b91}\label{irv_8h_a565a4ff5a4b0af5c61b97527771e5b91}} 
+\index{irv.\+h@{irv.\+h}!sum\+CandidateH@{sum\+CandidateH}}
+\index{sum\+CandidateH@{sum\+CandidateH}!irv.\+h@{irv.\+h}}
+\subsubsection{\texorpdfstring{sum\+Candidate\+H()}{sumCandidateH()}}
+{\footnotesize\ttfamily int sum\+CandidateH (\begin{DoxyParamCaption}\item[{\hyperlink{structdyn__tab}{dyn\+\_\+tab}}]{candidates }\end{DoxyParamCaption})}
+
+Fait la somme des points des candidats s\textquotesingle{}ils sont toujours valides 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em candidates} & \+: Liste des candidats \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La somme voulue 
+\end{DoxyReturn}

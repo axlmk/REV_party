@@ -1,3 +1,8 @@
+/// \file irv.h
+/// \brief Calcul du gagnant grâce à la fonction vote alternatif et ses dépendances
+/// \author Axel GAUTHIER
+/// \date 2019
+
 #ifndef IRV_H_
 #define IRV_H_
 
