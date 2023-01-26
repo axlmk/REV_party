@@ -1,4 +1,5 @@
 # REV_party
+## Project de License 2 Informatique
 ## Que fait le programme ?
 Les personnages de One Peace ont décidé d'élire l'un des leurs pour avoir représenter dans le monde de l'animation.
 Problème est qu'ils ne savent pas quel est la meilleure façon d'avoir un vote le plus équitable possible.
